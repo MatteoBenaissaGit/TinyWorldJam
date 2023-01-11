@@ -20,7 +20,7 @@ public class TileGeneratorEditor : Editor
         
         if(GUILayout.Button("Delete tiles"))
         {
-            script.DeleteTiles();
+            script.DeleteAllTiles();
         }
     }
 #endif    

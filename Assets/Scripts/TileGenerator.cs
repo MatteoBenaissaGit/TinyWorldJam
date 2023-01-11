@@ -7,30 +7,27 @@ using UnityEngine;
 
 public class TileGenerator : MonoBehaviour
 {
-    [SerializeField] private Tile _tilePrefab;
+    [SerializeField] private GameObject _tilePrefab;
     [Space(10)] public Vector2 GridSize;
 
-    private List<Tile> _tileList;
-    
     public void GenerateTiles()
     {
         for (int x = 0; x < GridSize.x; x++)
         {
             for (int y = 0; y < GridSize.y; y++)
             {
-                Tile tile = Instantiate(_tilePrefab, new Vector3(x, 0, y), Quaternion.identity);
+                GameObject tile = Instantiate(_tilePrefab, new Vector3(x, 0, y), Quaternion.identity);
                 tile.transform.SetParent(transform);
-                _tileList.Add(tile);
             }
         }
     }
 
-    public void DeleteTiles()
+    public void DeleteAllTiles()
     {
-        foreach (Tile tile in _tileList)
+        Tile[] array = GameObject.FindObjectsOfType<Tile>();
+        foreach (Tile tile in array)
         {
-            DestroyImmediate(tile.gameObject);
+            DestroyImmediate(tile.gameObject.transform.parent.gameObject);
         }
-        _tileList.Clear();
     }
 }
