@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2906668683180175206
 Transform:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d26e57a835536dc4a8f86de183b5ae30, type: 2}
+  - {fileID: 2100000, guid: 6b157005923067a49b88723ed97f3dce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 636527173607493971}
   - component: {fileID: 7888901144303095304}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selection: {fileID: 1196038779426489305}
+  _arrivalPrefab: {fileID: 1433926191112383564, guid: 7a1b4b4f8c86574469698cc0602d6eb1, type: 3}
+  _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
+  _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
+  _pathPrefab: {fileID: 3777131091042533811, guid: 56c0222d3c862dc4bac905d70315a3ca, type: 3}
   IsOccupied: 0
+  OccupierBuilding: {fileID: 0}
   IsSelected: 0
 --- !u!1 &6201577875554080892
 GameObject:
@@ -206,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6201577875554080864}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: TilePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileGenerator : MonoBehaviour
+public class MapManager : MonoBehaviour
 {
     [SerializeField] private GameObject _tilePrefab;
     [Space(10)] public Vector2 GridSize;

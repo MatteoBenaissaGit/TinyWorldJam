@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(TileGenerator))]
+[CustomEditor(typeof(MapManager))]
 public class TileGeneratorEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -11,7 +11,7 @@ public class TileGeneratorEditor : Editor
 #if UNITY_EDITOR
 
         DrawDefaultInspector();
-        var script = (TileGenerator)target;
+        var script = (MapManager)target;
         
         if(GUILayout.Button($"Generate {script.GridSize.x}:{script.GridSize.y} tiles"))
         {

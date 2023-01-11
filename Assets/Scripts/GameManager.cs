@@ -26,7 +26,13 @@ public class GameManager : MonoBehaviour
 
     #region Variables
 
-    [HideInInspector] public List<Tile> TileList = new List<Tile>();
+    [Header("Referencing"), SerializeField] private MapManager _mapManager;
+    
+    [Header("Debug")]
+    [ReadOnly] public GameState CurrentGameState = GameState.Start;
+    [ReadOnly] public Tile SelectedTile;
+    
+    [HideInInspector] public Tile[,] TileArray = new Tile[,]{};
 
     #endregion
 
@@ -36,8 +42,16 @@ public class GameManager : MonoBehaviour
     {
         //tile list creation
         Tile[] array = FindObjectsOfType<Tile>();
-        TileList.Clear();
-        TileList = array.ToList();
+        TileArray = new Tile[(int)_mapManager.GridSize.x, (int)_mapManager.GridSize.y];
+        foreach (Tile tile in array)
+        {
+            Vector3 position = tile.transform.position;
+            //TODO look for the real position and the position in the array it get placed to
+            TileArray[(int)position.x, (int)position.z] = tile;
+        }
+        
+        //state
+        ChangeState(GameState.PlacingPath);
     }
 
     private void Update()
@@ -47,6 +61,36 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region StateMachine
+
+    public void ChangeState(GameState gameState)
+    {
+        if (CurrentGameState == gameState)
+        {
+            return;
+        }
+
+        switch (gameState)
+        {
+            case GameState.Start:
+                break;
+            case GameState.PlacingPath:
+                break;
+            case GameState.ManagingDefense:
+                break;
+            case GameState.Attack:
+                break;
+            case GameState.Win:
+                break;
+            case GameState.Lose:
+                break;
+        }
+
+        CurrentGameState = gameState;
+    }
+
+    #endregion
+    
     #region Methods
 
     private void SelectTiles()
@@ -55,12 +99,12 @@ public class GameManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
         {
-            print(hit.transform.gameObject.name);
             Tile rayTile = hit.transform.gameObject.GetComponent<Tile>();
             if (rayTile != null)
             {
                 rayTile.Select();
-                foreach (Tile tile in TileList)
+                SelectedTile = rayTile;
+                foreach (Tile tile in TileArray)
                 {
                     if (tile != rayTile)
                     {
@@ -70,20 +114,65 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                foreach (Tile tile in TileList)
+                foreach (Tile tile in TileArray)
                 {
+                    SelectedTile = null;
                     tile.Unselect();
                 }
             }
         }
         else
         {
-            foreach (Tile tile in TileList)
+            foreach (Tile tile in TileArray)
             {
+                SelectedTile = null;
                 tile.Unselect();
             }
         }
     }
+    
+    public List<Tile> Neighbours(Tile tile)
+    {
+        print("getting neighbours");
+        
+        Vector2[] directions = new[]
+        {
+            new Vector2(0, 1),
+            new Vector2(0, -1),
+            new Vector2(1, 0),
+            new Vector2(-1, 0)
+        };
+        List<Tile> neighbours = new List<Tile>();
+
+        foreach (Vector2 direction in directions)
+        {
+            Vector3 tilePosition = tile.transform.position;
+            Vector2 position = new Vector2(tilePosition.x + direction.x, tilePosition.y + direction.y);
+            
+            print($"looking for position : {position}");
+            if (position.x >= 0 && position.x < (int)_mapManager.GridSize.x && position.y >= 0 &&
+                position.y < (int)_mapManager.GridSize.y)
+            {
+                Tile neighbour = TileArray[(int)position.x,(int)position.y];
+                if (neighbour != null)
+                {
+                    neighbours.Add(neighbour);
+                }
+            }
+        }
+
+        return neighbours;
+    }
 
     #endregion
+}
+
+public enum GameState
+{
+    Start,
+    PlacingPath,
+    ManagingDefense,
+    Attack,
+    Win,
+    Lose
 }
