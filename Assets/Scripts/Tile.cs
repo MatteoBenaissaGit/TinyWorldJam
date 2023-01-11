@@ -1,24 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public class Tile : MonoBehaviour
 {
     #region Editor Variables
 
-    [Header("Referencing"), SerializeField] private GameObject _selection;
-    
-    [Space(10), ReadOnly] public bool IsOccupied;   
+    [Header("Referencing"), SerializeField]
+    private GameObject _selection;
+
+    [Space(10), ReadOnly] public bool IsOccupied;
+    [ReadOnly] public bool IsSelected;
 
     #endregion
 
     #region Private Variables
 
-
-    
     #endregion
 
     #region Unity Engine Methods
@@ -29,26 +25,20 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     }
 
     #endregion
-    
-    #region Pointer events
 
-    public void OnPointerEnter(PointerEventData eventData)
-    { 
+    #region Methods
+
+    public void Select()
+    {
         _selection.SetActive(true);
+        IsSelected = true;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void Unselect()
     {
         _selection.SetActive(false);
+        IsSelected = false;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-    }
-    
-    public void OnPointerUp(PointerEventData eventData)
-    {
-    }
-    
     #endregion
 }
