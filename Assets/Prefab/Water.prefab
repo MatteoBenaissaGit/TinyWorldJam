@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 2024084727442136352}
   - component: {fileID: 2024084727442136353}
   - component: {fileID: 2024084727442136354}
-  - component: {fileID: 2024084727442136355}
   - component: {fileID: 8651596063991067915}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2024084727442136355
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024084727442136357}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8651596063991067915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,5 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb800d773c0e874e949f4cfc7cdcb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _antsUI: {fileID: 0}
   _hideGizmos: 0
   TileOccupied: {fileID: 0}
+  canBeUsed: 0
+  isUsed: 0
+  maxAntsInBuilding: 1
+  currentAntsInBuilding: 0

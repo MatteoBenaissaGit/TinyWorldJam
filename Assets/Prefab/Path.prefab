@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 3777131091042533810}
   - component: {fileID: 3777131091042533809}
   - component: {fileID: 3777131091042533808}
-  - component: {fileID: 3777131091042533815}
-  - component: {fileID: 3777131091042533811}
-  m_Layer: 0
+  - component: {fileID: 2626716249233425494}
+  m_Layer: 2
   m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,20 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3777131091042533815
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3777131091042533813}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3777131091042533811
+--- !u!114 &2626716249233425494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,8 +93,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3777131091042533813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9b60709292428a899b049afed40907, type: 3}
+  m_Script: {fileID: 11500000, guid: ef2597d1dc5a43648bb064c8b62ae015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hideGizmos: 0
+  _hideGizmos: 1
   TileOccupied: {fileID: 0}

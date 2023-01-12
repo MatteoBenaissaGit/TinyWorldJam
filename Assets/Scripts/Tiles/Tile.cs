@@ -7,21 +7,22 @@ public class Tile : MonoBehaviour
 {
     #region Editor Variables
 
-    [Header("Referencing"), SerializeField] private GameObject _selection;
+    [Header("Referencing"), SerializeField] private GameObject _suggestion;
     [SerializeField] private Building _arrivalPrefab;
     [SerializeField] private Building _departurePrefab;
     [SerializeField] private Building _waterPrefab;
-    [SerializeField] private Building _pathPrefab;
+    [SerializeField] private Building _ressourceBuildingPrefab;
 
     [Space(10), ReadOnly] public bool IsOccupied;
     [ReadOnly] public Building OccupierBuilding;
     [ReadOnly] public bool IsSelected;
+    [ReadOnly] public bool IsSuggested;
 
     #endregion
 
     #region Private Variables
 
-    private Vector3 _basePosition;
+    private Vector3 _baseSuggestionScale;
 
     #endregion
 
@@ -29,7 +30,7 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        _selection.SetActive(false);
+        _baseSuggestionScale = _suggestion.transform.localScale;
     }
 
     #endregion
@@ -43,7 +44,6 @@ public class Tile : MonoBehaviour
             return;
         }
         
-        _selection.SetActive(true);
         IsSelected = true;
     }
 
@@ -54,7 +54,6 @@ public class Tile : MonoBehaviour
             return;
         }
         
-        _selection.SetActive(false);
         IsSelected = false;
     }
 
@@ -66,6 +65,45 @@ public class Tile : MonoBehaviour
             IsOccupied = false;
             OccupierBuilding = null;
         }
+    }
+
+    #endregion
+
+    #region Suggestion
+
+    public void Suggest()
+    {
+        if (IsSuggested)
+        {
+            return;
+        }
+        
+        _suggestion.SetActive(true);
+        IsSuggested = true;
+        
+        //anim
+        _suggestion.transform.DOComplete();
+        _suggestion.transform.localScale = Vector3.zero;
+        _suggestion.transform.DOScale(_baseSuggestionScale, 0.2f).SetEase(Ease.InExpo);
+    }
+    
+    public void Unsuggest()
+    {
+        if (IsSuggested == false)
+        {
+            return;
+        }
+        
+        IsSuggested = false;
+        
+        //anim
+        _suggestion.transform.DOComplete();
+        _suggestion.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InExpo).OnComplete(DeactivateSuggestion);
+    }
+
+    private void DeactivateSuggestion()
+    {
+        _suggestion.SetActive(false);
     }
 
     #endregion
@@ -85,6 +123,11 @@ public class Tile : MonoBehaviour
     public void SetWater()
     {
         SetBuilding(_waterPrefab, -0.4f);
+    }
+    
+    public void SetRessourceBuilding()
+    {
+        SetBuilding(_ressourceBuildingPrefab, -0.4f);
     }
 
     public void SetBuilding(Building buildingToSpawn, float offsetY)

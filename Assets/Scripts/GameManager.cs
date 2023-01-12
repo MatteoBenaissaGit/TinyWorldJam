@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Buildings;
+using DG.Tweening;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -27,12 +29,17 @@ public class GameManager : MonoBehaviour
     #region Variables
 
     [Header("Referencing"), SerializeField] private MapManager _mapManager;
-    
+    [Header("Referencing"), SerializeField] private RoundsAndDefenseManager roundsAndDefenseManager;
+    [SerializeField] private GameObject _pathCreationUI;
+    [SerializeField] private GameObject _selectionUI;
+    [SerializeField] private GameObject _roundsUI;
+
     [Header("Debug")]
     [ReadOnly] public GameState CurrentGameState = GameState.Start;
     [ReadOnly] public Tile SelectedTile;
     
     [HideInInspector] public Tile[,] TileArray = new Tile[,]{};
+    [HideInInspector] public List<Building> BuildingList = new List<Building>();
 
     #endregion
 
@@ -46,8 +53,13 @@ public class GameManager : MonoBehaviour
         foreach (Tile tile in array)
         {
             Vector3 position = tile.transform.position;
-            //TODO look for the real position and the position in the array it get placed to
+            tile.gameObject.transform.parent.gameObject.name = $"{(int)position.x}.{(int)position.z}";
             TileArray[(int)position.x, (int)position.z] = tile;
+        }
+        //build list creation
+        foreach (Building building in FindObjectsOfType<Building>())
+        {
+            BuildingList.Add(building);
         }
         
         //state
@@ -57,6 +69,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         SelectTiles();
+        SelectionOnOffCheck();
     }
 
     #endregion
@@ -87,11 +100,23 @@ public class GameManager : MonoBehaviour
         }
 
         CurrentGameState = gameState;
+        
+        //UIs
+        _pathCreationUI.SetActive(CurrentGameState == GameState.PlacingPath);
+        _roundsUI.SetActive(CurrentGameState == GameState.ManagingDefense);
+        if (CurrentGameState == GameState.ManagingDefense)
+        {
+            BuildingList.ForEach(x => x.ShowAntUI());
+        }
+        else
+        {
+            BuildingList.ForEach(x => x.HideAntUI());
+        }
     }
 
     #endregion
     
-    #region Methods
+    #region Tile Methods
 
     private void SelectTiles()
     {
@@ -103,21 +128,18 @@ public class GameManager : MonoBehaviour
             if (rayTile != null)
             {
                 rayTile.Select();
-                SelectedTile = rayTile;
+                if (SelectedTile != rayTile)
+                {
+                    SelectedTile = rayTile;
+                    Vector3 rayPosition = rayTile.transform.position;
+                    MoveSelectionTo(new Vector2(rayPosition.x, rayPosition.z));
+                }
                 foreach (Tile tile in TileArray)
                 {
                     if (tile != rayTile)
                     {
                         tile.Unselect();
                     }
-                }
-            }
-            else
-            {
-                foreach (Tile tile in TileArray)
-                {
-                    SelectedTile = null;
-                    tile.Unselect();
                 }
             }
         }
@@ -133,8 +155,6 @@ public class GameManager : MonoBehaviour
     
     public List<Tile> Neighbours(Tile tile)
     {
-        print("getting neighbours");
-        
         Vector2[] directions = new[]
         {
             new Vector2(0, 1),
@@ -147,14 +167,13 @@ public class GameManager : MonoBehaviour
         foreach (Vector2 direction in directions)
         {
             Vector3 tilePosition = tile.transform.position;
-            Vector2 position = new Vector2(tilePosition.x + direction.x, tilePosition.y + direction.y);
+            Vector2 position = new Vector2(tilePosition.x + direction.x, tilePosition.z + direction.y);
             
-            print($"looking for position : {position}");
             if (position.x >= 0 && position.x < (int)_mapManager.GridSize.x && position.y >= 0 &&
                 position.y < (int)_mapManager.GridSize.y)
             {
                 Tile neighbour = TileArray[(int)position.x,(int)position.y];
-                if (neighbour != null)
+                if (neighbour != null && (neighbour.IsOccupied == false || neighbour.OccupierBuilding.GetComponent<Path>()))
                 {
                     neighbours.Add(neighbour);
                 }
@@ -162,6 +181,38 @@ public class GameManager : MonoBehaviour
         }
 
         return neighbours;
+    }
+
+    private void SelectionOnOffCheck()
+    {
+        if (SelectedTile != null && _selectionUI.activeInHierarchy == false)
+        {
+            _selectionUI.SetActive(true);
+            _selectionUI.transform.localScale = Vector3.zero;
+            _selectionUI.transform.DOComplete();
+            _selectionUI.transform.DOScale(Vector3.one, 0.2f);
+        }
+        if (SelectedTile == null && _selectionUI.activeInHierarchy)
+        {
+            _selectionUI.transform.DOComplete();
+            _selectionUI.transform.DOScale(Vector3.zero, 0.1f).OnComplete(DeactivateSelection);
+        }
+    }
+
+    private void DeactivateSelection()
+    {
+        _selectionUI.SetActive(false);
+    }
+
+    private void MoveSelectionTo(Vector2 position)
+    {
+        _selectionUI.transform.DOMove(new Vector3(position.x, 0, position.y), 0.1f);
+    }
+
+    public void ShakeSelectionAnimation()
+    {
+        _selectionUI.transform.DOComplete();
+        _selectionUI.transform.DOShakePosition(0.25f, new Vector3(0.2f,0,0.2f), 25, 0);
     }
 
     #endregion

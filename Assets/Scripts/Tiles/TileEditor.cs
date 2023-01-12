@@ -32,6 +32,11 @@ public class TileEditor : Editor
         {
             script.SetWater();
         }
+        
+        if(GUILayout.Button($"Set Ressource Building"))
+        {
+            script.SetRessourceBuilding();
+        }
     }
 #endif    
 }
