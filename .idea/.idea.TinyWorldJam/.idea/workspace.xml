@@ -89,7 +89,7 @@
       <updated>1673442673234</updated>
       <workItem from="1673442675651" duration="11807000" />
       <workItem from="1673461092959" duration="37278000" />
-      <workItem from="1673511158422" duration="12698000" />
+      <workItem from="1673511158422" duration="13370000" />
     </task>
     <servers />
   </component>
@@ -121,10 +121,10 @@
           <line>35</line>
           <properties documentPath="C:\Users\mbenaissa\Documents\TinyWorldJam\Assets\Scripts\Buildings\MandibuleTowerAttack.cs" initialLine="21" containingFunctionPresentation="method 'Update'">
             <startOffsets>
-              <option value="1210" />
+              <option value="1181" />
             </startOffsets>
             <endOffsets>
-              <option value="1249" />
+              <option value="1220" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="11" />

@@ -20,7 +20,7 @@ public class MandibuleTowerAttack : AttackBuilding
             }
             if (projectile.EnemyToAim == null)
             {
-                projectile.ProjectileLaunched.transform.DOScale(Vector3.zero, 0.3f);
+                Destroy(projectile.ProjectileLaunched);
                 _projectiles.Remove(projectile);
                 continue;
             }

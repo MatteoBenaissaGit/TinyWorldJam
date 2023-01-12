@@ -74,6 +74,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        transform.DOKill();
         transform.DOScale(Vector3.zero, 0.3f).OnComplete(DestroyItself);
         if (FindObjectsOfType<Enemy>().Length <= 1)
         {
