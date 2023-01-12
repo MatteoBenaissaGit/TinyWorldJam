@@ -18,16 +18,29 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [SerializeField] private List<CardInfo> _cardsInfos;
     [SerializeField] private GameObject _cancelCardButton;
     [SerializeField] private Button _startRoundButton;
+    [SerializeField] public Image LifeBarImage;
+    [SerializeField] private Image _timerCircularImage;
+    [SerializeField] private PathManager _pathManager;
 
-    [Header("Parameters"), Range(0, 3)] public float EnemiesSpeedToWalkATile;
+    [Header("Parameters")]
     [Range(0, 10)] public int NumberOfAnts;
     [ReadOnly] public int NumberOfAvailaibleAnts;
     [Range(0, 10)] public int NumberOfLeafs;
     [ReadOnly] private int _currentRound = 0;
+    [SerializeField] private List<Wave> _waveList = new List<Wave>();
 
     [Space(10), ReadOnly, Header("Debug")] public bool IsPlacingCard;
     public Card SelectedCard;
 
+    private Wave _currentWave;
+    [ReadOnly, SerializeField] private float _totalTimeOfWave;
+    [ReadOnly, SerializeField] private float _currentTimeOfWave;
+    [ReadOnly, SerializeField] private float _spawnEnemyTime;
+    [ReadOnly, SerializeField] private float _currentSpawnEnemyTime;
+    [ReadOnly, SerializeField] private List<GameObject> _enemyWaveList = new List<GameObject>();
+    [ReadOnly, SerializeField] private int _currentEnemy;
+    [ReadOnly] public bool IsAttacking;
+    
     #endregion
 
     #region Unity Engine Methods
@@ -46,6 +59,11 @@ public class RoundsAndDefenseManager : MonoBehaviour
         }
 
         ManageCardSelection();
+
+        if (IsAttacking)
+        {
+            TimerManagement();
+        }
     }
 
     #endregion
@@ -60,17 +78,11 @@ public class RoundsAndDefenseManager : MonoBehaviour
         {
             _roundsUIImagesList[i].SetActive(i < _currentRound);
         }
-    }
 
-    public void StartRound()
-    {
-        if (IsPlacingCard)
+        if (_pathManager.Arrival != null)
         {
-            return;
+            LifeBarImage.fillAmount = _pathManager.Arrival.CurrentLife / _pathManager.Arrival.Life;
         }
-
-        _currentRound++;
-        RefreshUI();
     }
 
     #endregion
@@ -178,4 +190,96 @@ public class RoundsAndDefenseManager : MonoBehaviour
     }
 
     #endregion
+
+    #region Attack Methods
+
+    public void StartRound()
+    {
+        if (IsPlacingCard || _currentRound >= _waveList.Count)
+        {
+            return;
+        }
+        
+        //calculate wave
+        _currentWave = _waveList[_currentRound];
+        float timeForEnemyToCompletePath = _pathManager.TilePath.Count * _currentWave.EnemiesSpeedToWalkATile;
+        int numberOfEnemies = 0;
+        _enemyWaveList.Clear();
+        foreach (EnemyGroup group in _waveList[_currentRound].EnemyGroupList)
+        {
+            numberOfEnemies += group.AmountOfEnemies;
+            for (int i = 0; i < group.AmountOfEnemies; i++)
+            {
+                _enemyWaveList.Add(group.EnemyType);
+            }
+        }
+        _totalTimeOfWave = timeForEnemyToCompletePath + numberOfEnemies * _currentWave.EnemiesSpeedToWalkATile;
+        _currentTimeOfWave = _totalTimeOfWave;
+        _spawnEnemyTime = _currentWave.EnemiesSpeedToWalkATile;
+        _currentSpawnEnemyTime = _spawnEnemyTime;
+        
+        //ui & state
+        _currentRound++;
+        RefreshUI();
+        GameManager.Instance.ChangeState(GameState.Attack);
+        
+        IsAttacking = true;
+    }
+
+    private void TimerManagement()
+    {
+        //wave
+        _currentTimeOfWave -= Time.deltaTime;
+        if (_currentTimeOfWave <= 0)
+        {
+            EndOfWave();
+        }
+        
+        //enemy spawn
+        _currentSpawnEnemyTime -= Time.deltaTime;
+        if (_currentSpawnEnemyTime <= 0 && _currentEnemy < _enemyWaveList.Count)
+        {
+            SpawnEnemy(_enemyWaveList[_currentEnemy]);
+            _currentEnemy++;
+            _currentSpawnEnemyTime = _spawnEnemyTime;
+        }
+        
+        //ui
+        RefreshUI();
+        _timerCircularImage.fillAmount = _currentTimeOfWave / _totalTimeOfWave;
+    }
+
+    private void SpawnEnemy(GameObject enemy)
+    {
+        GameObject spawnedEnemy = Instantiate(enemy, _pathManager.Departure.transform.position, Quaternion.identity);
+        Enemy enemyScript = spawnedEnemy.GetComponent<Enemy>();
+        float timeForEnemyToCompletePath = _pathManager.TilePath.Count * _currentWave.EnemiesSpeedToWalkATile;
+        enemyScript.Timer = timeForEnemyToCompletePath;
+        enemyScript.TilePath = _pathManager.TilePath;
+        enemyScript.MoveTime = _currentWave.EnemiesSpeedToWalkATile;
+    }
+
+    private void EndOfWave()
+    {
+        _currentEnemy = 0;
+        IsAttacking = false;
+        GameManager.Instance.ChangeState(GameState.ManagingDefense);
+    }
+
+    #endregion
+}
+
+[Serializable]
+public struct EnemyGroup
+{
+    public int AmountOfEnemies;
+    public GameObject EnemyType;
+
+}
+
+[Serializable]
+public struct Wave
+{
+    public float EnemiesSpeedToWalkATile;
+    public List<EnemyGroup> EnemyGroupList;
 }

@@ -20,8 +20,8 @@ public class PathManager : MonoBehaviour
 
     [ReadOnly] public List<Tile> TilePath = new List<Tile>();
     
-    private Arrival _arrival;
-    private Departure _departure;
+    [HideInInspector] public Arrival Arrival;
+    [HideInInspector] public Departure Departure;
     private int _currentNumberOfPath;
 
     #endregion
@@ -31,11 +31,11 @@ public class PathManager : MonoBehaviour
     private void Start()
     {
         //reference
-        _arrival = FindObjectOfType<Arrival>();
-        _departure = FindObjectOfType<Departure>();
+        Arrival = FindObjectOfType<Arrival>();
+        Departure = FindObjectOfType<Departure>();
 
         //path
-        TilePath.Add(_departure.TileOccupied); //departure = first tile you have to place on
+        TilePath.Add(Departure.TileOccupied); //departure = first tile you have to place on
         _currentNumberOfPath = _numberOfPathUsable;
         GameManager.Instance.Neighbours(TilePath[0]).ForEach(x => x.Suggest());
 
@@ -137,13 +137,13 @@ public class PathManager : MonoBehaviour
         //path clear
         foreach (Tile tile in TilePath)
         {
-            if (tile != _departure.TileOccupied)
+            if (tile != Departure.TileOccupied)
             {
                 tile.RemoveAnyBuilding();
             }
         }
         TilePath.Clear();
-        TilePath.Add(_departure.TileOccupied);
+        TilePath.Add(Departure.TileOccupied);
         _currentNumberOfPath = _numberOfPathUsable;
         
         //ui
@@ -157,7 +157,7 @@ public class PathManager : MonoBehaviour
         {
             return;
         }
-        TilePath.Add(_arrival.TileOccupied);
+        TilePath.Add(Arrival.TileOccupied);
         foreach (Tile tile in TilePath)
         {
             GameManager.Instance.Neighbours(tile).ForEach(x => x.Unsuggest());
@@ -167,7 +167,7 @@ public class PathManager : MonoBehaviour
 
     private bool CanPathBeConfirmed()
     {
-        List<Tile> neighbours = GameManager.Instance.Neighbours(_arrival.TileOccupied);
+        List<Tile> neighbours = GameManager.Instance.Neighbours(Arrival.TileOccupied);
         return neighbours.Contains(TilePath.Last());
     }
 

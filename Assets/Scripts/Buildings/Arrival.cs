@@ -4,11 +4,19 @@ namespace Buildings
 {
     public class Arrival : Building
     {
-        [Space(10), Header("Arrival"), SerializeField] private int _life;
+        [Space(10), Header("Arrival"), SerializeField] public int Life;
 
-        public void SetLife(int value)
+        [ReadOnly] public float CurrentLife;
+
+        public override void Start()
         {
-            _life += value;
+            base.Start();
+            CurrentLife = Life;
+        }
+
+        public void SetLife(float value)
+        {
+            CurrentLife += value;
         }
     }
 }

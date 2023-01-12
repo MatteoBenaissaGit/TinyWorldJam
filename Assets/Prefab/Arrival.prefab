@@ -97,8 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e387b70503a457f8c1427d401962721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _antsUI: {fileID: 0}
   _hideGizmos: 0
   TileOccupied: {fileID: 0}
+  CanBeUsed: 0
+  IsUsed: 0
+  MaxAntsInBuilding: 1
+  CurrentAntsInBuilding: 0
+  Life: 100
+  CurrentLife: 0
 --- !u!1 &4715261813941532706
 GameObject:
   m_ObjectHideFlags: 0

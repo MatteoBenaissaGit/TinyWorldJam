@@ -12,10 +12,7 @@ public class MandibuleTower : Building
     private void Start()
     {
         UpdateUI();
-        Vector3 scale = transform.localScale;
-        transform.localScale = Vector3.zero;
-        transform.DOComplete();
-        transform.DOScale(scale, 0.3f).SetEase(Ease.InExpo);
+        ScaleAnimation();
     }
     
     private void UpdateUI()

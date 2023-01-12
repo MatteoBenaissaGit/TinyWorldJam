@@ -3,17 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4eb72d-7d11-49f1-b6bc-daef4dcc7b2b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TinyWorldJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TinyWorldJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/Placeholders/TileSelectionGreenMaterial 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/Placeholders/TileSelectionGreenMaterial 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/RessourceBuilding.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/RessourceBuilding.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Fillbar_01_Block.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Fillbar_01_Block.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Fillbar_01_Hollow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Fillbar_01_Hollow.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Filler_01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Filler_01.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Arrival.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Arrival.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/Arrival.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/Arrival.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/RessourceBuilding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/RessourceBuilding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTower.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2KBKjZenJ0jOXVv6xUSym7pbVwL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -101,7 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673442673234</updated>
       <workItem from="1673442675651" duration="11807000" />
-      <workItem from="1673461092959" duration="27448000" />
+      <workItem from="1673461092959" duration="35686000" />
     </task>
     <servers />
   </component>

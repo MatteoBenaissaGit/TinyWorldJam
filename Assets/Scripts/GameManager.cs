@@ -29,10 +29,12 @@ public class GameManager : MonoBehaviour
     #region Variables
 
     [Header("Referencing"), SerializeField] private MapManager _mapManager;
+    [Header("Referencing"), SerializeField] private PathManager _pathManager;
     [Header("Referencing"), SerializeField] private RoundsAndDefenseManager roundsAndDefenseManager;
     [SerializeField] private GameObject _pathCreationUI;
     [SerializeField] private GameObject _selectionUI;
-    [SerializeField] private GameObject _roundsUI;
+    [SerializeField] private GameObject _defenseUI;
+    [SerializeField] private GameObject _roundsAttackUI;
 
     [Header("Debug")]
     [ReadOnly] public GameState CurrentGameState = GameState.Start;
@@ -104,7 +106,8 @@ public class GameManager : MonoBehaviour
         
         //UIs
         _pathCreationUI.SetActive(CurrentGameState == GameState.PlacingPath);
-        _roundsUI.SetActive(CurrentGameState == GameState.ManagingDefense);
+        _defenseUI.SetActive(CurrentGameState == GameState.ManagingDefense);
+        _roundsAttackUI.SetActive(CurrentGameState == GameState.Attack);
         if (CurrentGameState != GameState.ManagingDefense)
         {
             BuildingList = FindObjectsOfType<Building>().ToList();
@@ -221,6 +224,16 @@ public class GameManager : MonoBehaviour
         {
             SelectedTile.OccupierBuilding.ShowAntUI();
         }
+    }
+
+    #endregion
+
+    #region Round Methods
+
+    public void EnemyAttainArrival(Enemy enemy)
+    {
+        _pathManager.Arrival.SetLife(enemy.Damage);
+        roundsAndDefenseManager.LifeBarImage.fillAmount = _pathManager.Arrival.CurrentLife / _pathManager.Arrival.Life;
     }
 
     #endregion

@@ -15,7 +15,7 @@ public class Building : MonoBehaviour
     public int MaxAntsInBuilding = 1;
     [ReadOnly] public int CurrentAntsInBuilding = 0;
 
-    private void Start()
+    public virtual void Start()
     {
         if (_antsUI != null)
         {
