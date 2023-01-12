@@ -289,12 +289,18 @@ public class RoundsAndDefenseManager : MonoBehaviour
                 _currentEnemyGroup++;
                 _currentEnemyInEnemyGroup = 0;
                 //ui
-                float timeToFill = _waveList[_currentRound-1].EnemyGroupList[_currentEnemyGroup].TimeToSpawnWave();
+                EnemyGroup passedGroup = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup-1];
+                EnemyGroup group = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup];
+                float timeToFill = group.TimeToSpawnWave() + passedGroup.WaitTimeAtEnd + group.SpeedToCrossOneTile;
+                _currentSpawnEnemyTime = passedGroup.WaitTimeAtEnd;
                 _timerCircularImage.DOFillAmount(1 - (float)_currentEnemyGroup-1 / (float)_totalNumberOfEnemyGroupInWave, timeToFill).SetEase(Ease.Linear);
             }
 
             _spawnEnemyTime = _currentWave.EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
-            _currentSpawnEnemyTime = _spawnEnemyTime;
+            if (_currentEnemyInEnemyGroup > 0)
+            {
+                _currentSpawnEnemyTime = _spawnEnemyTime;
+            }
         }
         
         //ui

@@ -2550,10 +2550,10 @@ MonoBehaviour:
     - AmountOfEnemies: 3
       EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
       SpeedToCrossOneTile: 1
-      WaitTimeAtEnd: 0
+      WaitTimeAtEnd: 2
     - AmountOfEnemies: 2
       EnemyType: {fileID: 4755851212166958379, guid: fe374ece26c06ad42a9b3d88ce5a5ea7, type: 3}
-      SpeedToCrossOneTile: 0.75
+      SpeedToCrossOneTile: 0.5
       WaitTimeAtEnd: 0
   - EnemyGroupList:
     - AmountOfEnemies: 5
