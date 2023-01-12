@@ -2549,36 +2549,56 @@ MonoBehaviour:
   - EnemyGroupList:
     - AmountOfEnemies: 3
       EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
-      SpeedToCrossOneTile: 1
+      SpeedToCrossOneTile: 0.2
       WaitTimeAtEnd: 2
     - AmountOfEnemies: 2
       EnemyType: {fileID: 4755851212166958379, guid: fe374ece26c06ad42a9b3d88ce5a5ea7, type: 3}
       SpeedToCrossOneTile: 0.5
       WaitTimeAtEnd: 0
   - EnemyGroupList:
-    - AmountOfEnemies: 5
+    - AmountOfEnemies: 2
       EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
-      SpeedToCrossOneTile: 0
+      SpeedToCrossOneTile: 0.2
+      WaitTimeAtEnd: 0
+    - AmountOfEnemies: 2
+      EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
+      SpeedToCrossOneTile: 0.2
       WaitTimeAtEnd: 0
   - EnemyGroupList:
-    - AmountOfEnemies: 5
+    - AmountOfEnemies: 2
       EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
-      SpeedToCrossOneTile: 0
+      SpeedToCrossOneTile: 0.2
+      WaitTimeAtEnd: 0
+    - AmountOfEnemies: 2
+      EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
+      SpeedToCrossOneTile: 0.2
       WaitTimeAtEnd: 0
   - EnemyGroupList:
-    - AmountOfEnemies: 5
+    - AmountOfEnemies: 2
       EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
-      SpeedToCrossOneTile: 0
+      SpeedToCrossOneTile: 0.2
+      WaitTimeAtEnd: 0
+    - AmountOfEnemies: 2
+      EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
+      SpeedToCrossOneTile: 0.2
       WaitTimeAtEnd: 0
   - EnemyGroupList:
-    - AmountOfEnemies: 5
+    - AmountOfEnemies: 2
       EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
-      SpeedToCrossOneTile: 0
+      SpeedToCrossOneTile: 0.2
+      WaitTimeAtEnd: 0
+    - AmountOfEnemies: 2
+      EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
+      SpeedToCrossOneTile: 0.2
       WaitTimeAtEnd: 0
   - EnemyGroupList:
-    - AmountOfEnemies: 5
+    - AmountOfEnemies: 2
       EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
-      SpeedToCrossOneTile: 0
+      SpeedToCrossOneTile: 0.2
+      WaitTimeAtEnd: 0
+    - AmountOfEnemies: 2
+      EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
+      SpeedToCrossOneTile: 0.2
       WaitTimeAtEnd: 0
   IsPlacingCard: 0
   SelectedCard: {fileID: 0}

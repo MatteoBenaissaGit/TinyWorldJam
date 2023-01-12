@@ -292,7 +292,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
                 EnemyGroup passedGroup = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup-1];
                 EnemyGroup group = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup];
                 float timeToFill = group.TimeToSpawnWave() + passedGroup.WaitTimeAtEnd + group.SpeedToCrossOneTile;
-                _currentSpawnEnemyTime = passedGroup.WaitTimeAtEnd;
+                _currentSpawnEnemyTime = passedGroup.WaitTimeAtEnd == 0 ? 1 : passedGroup.WaitTimeAtEnd;
                 _timerCircularImage.DOFillAmount(1 - (float)_currentEnemyGroup-1 / (float)_totalNumberOfEnemyGroupInWave, timeToFill).SetEase(Ease.Linear);
             }
 
@@ -324,6 +324,13 @@ public class RoundsAndDefenseManager : MonoBehaviour
     public void EndOfWave()
     {
         IsAttacking = false;
+        
+        //check win or continue rounds
+        if (_currentRound > 5)
+        {
+            GameManager.Instance.ChangeState(GameState.Win);
+            return;
+        }
         GameManager.Instance.ChangeState(GameState.ManagingDefense);
         _currentEnemy = 0;
         CheckRessources();
