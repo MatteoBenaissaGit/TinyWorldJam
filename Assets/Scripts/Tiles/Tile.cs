@@ -104,7 +104,7 @@ public class Tile : MonoBehaviour
         
         //offset
         _suggestion.transform.position =
-            IsOccupied ? _baseSuggestionPosition + new Vector3(0, 0.15f, 0) : _baseSuggestionPosition;
+            IsOccupied ? _baseSuggestionPosition + new Vector3(0, 0.2f, 0) : _baseSuggestionPosition;
     }
     
     public void Unsuggest()
