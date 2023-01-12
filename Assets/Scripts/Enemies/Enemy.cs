@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public List<Tile> TilePath = new List<Tile>();
     private int _currentTile;
     [HideInInspector] public float MoveTime;
+    [HideInInspector] public Sequence TweenSequence;
 
     private void Start()
     {
@@ -32,15 +33,15 @@ public class Enemy : MonoBehaviour
         }
 
         //sequence tile
-        Sequence sequence = DOTween.Sequence();
+        TweenSequence = DOTween.Sequence();
         for (int i = 0; i < TilePath.Count - 1; i++)
         {
-            sequence.Append(
+            TweenSequence.Append(
                     transform.DOMove(TilePath[i + 1].transform.position + new Vector3(0, _offsetY, 0), MoveTime).SetEase(Ease.Linear));
         }
 
-        sequence.OnComplete(AttainedArrival);
-        sequence.Play();
+        TweenSequence.OnComplete(AttainedArrival);
+        TweenSequence.Play();
     }
 
     private void Update()
@@ -75,6 +76,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         transform.DOKill();
+        TweenSequence.Kill();
         transform.DOScale(Vector3.zero, 0.3f).OnComplete(DestroyItself);
         if (FindObjectsOfType<Enemy>().Length <= 1)
         {
