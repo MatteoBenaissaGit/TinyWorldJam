@@ -25,6 +25,7 @@ public class Tile : MonoBehaviour
 
     #region Private Variables
 
+    private Vector3 _baseSuggestionPosition;
     private Vector3 _baseSuggestionScale;
 
     #endregion
@@ -33,6 +34,7 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
+        _baseSuggestionPosition = _suggestion.transform.position;
         _baseSuggestionScale = _suggestion.transform.localScale;
     }
 
@@ -99,6 +101,10 @@ public class Tile : MonoBehaviour
         _suggestion.transform.DOComplete();
         _suggestion.transform.localScale = Vector3.zero;
         _suggestion.transform.DOScale(_baseSuggestionScale, 0.2f).SetEase(Ease.InExpo);
+        
+        //offset
+        _suggestion.transform.position =
+            IsOccupied ? _baseSuggestionPosition + new Vector3(0, 0.2f, 0) : _baseSuggestionPosition;
     }
     
     public void Unsuggest()

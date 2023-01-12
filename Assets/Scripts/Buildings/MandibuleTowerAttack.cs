@@ -34,8 +34,8 @@ public class MandibuleTowerAttack : AttackBuilding
             if (Vector3.Distance(position, enemyPosition) < 0.01f)
             {
                 projectile.EnemyToAim.SetLife(-Damage);
-                _projectiles.Remove(projectile);
                 Destroy(projectile.ProjectileLaunched);
+                _projectiles.Remove(projectile);
             }
         }
     }
@@ -47,8 +47,9 @@ public class MandibuleTowerAttack : AttackBuilding
         _projectiles.Add(new Projectile(){ProjectileLaunched = projectile, EnemyToAim = enemy});
         
         //anim
+        Vector3 scale = projectile.transform.localScale;
         projectile.transform.localScale = Vector3.zero;
-        projectile.transform.DOScale(Vector3.one, 0.5f);
+        projectile.transform.DOScale(scale, 0.25f);
     }
 }
 

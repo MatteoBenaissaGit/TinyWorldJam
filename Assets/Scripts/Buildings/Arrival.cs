@@ -17,6 +17,15 @@ namespace Buildings
         public void SetLife(float value)
         {
             CurrentLife += value;
+            if (CurrentLife <= 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            GameManager.Instance.ChangeState(GameState.Lose);
         }
     }
 }

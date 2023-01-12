@@ -55,7 +55,9 @@ public class AttackBuilding : MonoBehaviour
         List<Enemy> enemiesInRange = new List<Enemy>();
 
         //detection 
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, _range, transform.forward, 0.01f, _layerMask);
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position, 
+            new Vector3(_range/2,100,_range/2), Vector3.up, Quaternion.identity, 0.01f, _layerMask);
+        
         foreach (RaycastHit ray in hits)
         {
             Enemy enemy = ray.collider.gameObject.GetComponent<Enemy>();
@@ -88,7 +90,7 @@ public class AttackBuilding : MonoBehaviour
         }
         
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _range);
+        Gizmos.DrawWireCube(transform.position, new Vector3(_range,200,_range));
     }
 
 #endif

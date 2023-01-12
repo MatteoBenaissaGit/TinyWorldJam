@@ -89,7 +89,7 @@
       <updated>1673442673234</updated>
       <workItem from="1673442675651" duration="11807000" />
       <workItem from="1673461092959" duration="37278000" />
-      <workItem from="1673511158422" duration="13370000" />
+      <workItem from="1673511158422" duration="22631000" />
     </task>
     <servers />
   </component>
@@ -114,23 +114,6 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTowerAttack.cs</url>
-          <line>35</line>
-          <properties documentPath="C:\Users\mbenaissa\Documents\TinyWorldJam\Assets\Scripts\Buildings\MandibuleTowerAttack.cs" initialLine="21" containingFunctionPresentation="method 'Update'">
-            <startOffsets>
-              <option value="1181" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1220" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Frame#AttackBuilding.LaunchAttack" memberName="hits" />

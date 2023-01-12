@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class RoundsAndDefenseManager : MonoBehaviour
@@ -34,10 +37,12 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [ReadOnly] public Card SelectedCard;
 
     private Wave _currentWave;
-    [ReadOnly, SerializeField] private float _totalTimeOfWave;
+    [FormerlySerializedAs("_totalTimeOfWave")] [ReadOnly, SerializeField] private float _totalNumberOfEnemyGroupInWave;
     [ReadOnly, SerializeField] private float _currentTimeOfWave;
     [ReadOnly, SerializeField] private float _spawnEnemyTime;
     [ReadOnly, SerializeField] private float _currentSpawnEnemyTime;
+    [ReadOnly, SerializeField] private int _currentEnemyGroup;
+    [ReadOnly, SerializeField] private int _currentEnemyInEnemyGroup;
     [ReadOnly, SerializeField] private List<GameObject> _enemyWaveList = new List<GameObject>();
     [ReadOnly, SerializeField] private int _currentEnemy;
     [ReadOnly] public bool IsAttacking;
@@ -215,20 +220,30 @@ public class RoundsAndDefenseManager : MonoBehaviour
         
         //calculate wave
         _currentWave = _waveList[_currentRound];
-        float timeForEnemyToCompletePath = _pathManager.TilePath.Count * _currentWave.EnemiesSpeedToWalkATile;
+        //list for each wave to complete the path
+        List<float> timeForEnemyToCompletePathList = new List<float>();
+        foreach (EnemyGroup enemyGroup in _currentWave.EnemyGroupList)
+        {
+            timeForEnemyToCompletePathList.Add(enemyGroup.SpeedToCrossOneTile * _pathManager.TilePath.Count);
+        }
+        //reset enemy wave list
+        _currentEnemyInEnemyGroup = 0;
+        _currentEnemyGroup = 0;
         int numberOfEnemies = 0;
         _enemyWaveList.Clear();
-        foreach (EnemyGroup group in _waveList[_currentRound].EnemyGroupList)
+        //_enemyWaveList
+        foreach (EnemyGroup enemyGroup in _currentWave.EnemyGroupList)
         {
-            numberOfEnemies += group.AmountOfEnemies;
-            for (int i = 0; i < group.AmountOfEnemies; i++)
+            numberOfEnemies += enemyGroup.AmountOfEnemies;
+            for (int i = 0; i < enemyGroup.AmountOfEnemies; i++)
             {
-                _enemyWaveList.Add(group.EnemyType);
+                _enemyWaveList.Add(enemyGroup.EnemyType);
             }
         }
-        _totalTimeOfWave = timeForEnemyToCompletePath + numberOfEnemies * _currentWave.EnemiesSpeedToWalkATile;
-        _currentTimeOfWave = _totalTimeOfWave;
-        _spawnEnemyTime = _currentWave.EnemiesSpeedToWalkATile;
+        //total time (circular fill)
+        _totalNumberOfEnemyGroupInWave = _currentWave.EnemyGroupList.Count;
+        //spawn timer
+        _spawnEnemyTime = _currentWave.EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
         _currentSpawnEnemyTime = _spawnEnemyTime;
         
         //attack towers
@@ -244,16 +259,18 @@ public class RoundsAndDefenseManager : MonoBehaviour
         //ui & state
         _currentRound++;
         RefreshUI();
-        
         IsAttacking = true;
+        _timerCircularImage.fillAmount = 1;
+        float timeToFill = _waveList[_currentRound-1].EnemyGroupList[_currentEnemyGroup].TimeToSpawnWave();
+        _timerCircularImage.DOFillAmount(1 - (float)_currentEnemyGroup-1 / (float)_totalNumberOfEnemyGroupInWave, timeToFill).SetEase(Ease.Linear);
     }
 
     private void TimerManagement()
     {
         //wave
-        _currentTimeOfWave -= Time.deltaTime;
-        if (_currentTimeOfWave <= 0)
+        if (_currentEnemyGroup == _totalNumberOfEnemyGroupInWave-1 && FindObjectsOfType<Enemy>().Length == 0)
         {
+            print("end of wave");
             EndOfWave();
         }
         
@@ -263,27 +280,57 @@ public class RoundsAndDefenseManager : MonoBehaviour
         {
             SpawnEnemy(_enemyWaveList[_currentEnemy]);
             _currentEnemy++;
-            _currentSpawnEnemyTime = _spawnEnemyTime;
+            
+            //check for next enemyGroup
+            _currentEnemyInEnemyGroup++;
+            if (_currentEnemyInEnemyGroup >= _currentWave.EnemyGroupList[_currentEnemyGroup].AmountOfEnemies &&
+                _currentEnemyGroup < _currentWave.EnemyGroupList.Count-1)
+            {
+                _currentEnemyGroup++;
+                _currentEnemyInEnemyGroup = 0;
+                //ui
+                EnemyGroup passedGroup = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup-1];
+                EnemyGroup group = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup];
+                float timeToFill = group.TimeToSpawnWave() + passedGroup.WaitTimeAtEnd + group.SpeedToCrossOneTile;
+                _currentSpawnEnemyTime = passedGroup.WaitTimeAtEnd == 0 ? 1 : passedGroup.WaitTimeAtEnd;
+                _timerCircularImage.DOFillAmount(1 - (float)_currentEnemyGroup-1 / (float)_totalNumberOfEnemyGroupInWave, timeToFill).SetEase(Ease.Linear);
+            }
+
+            _spawnEnemyTime = _currentWave.EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
+            if (_currentEnemyInEnemyGroup > 0)
+            {
+                _currentSpawnEnemyTime = _spawnEnemyTime;
+            }
         }
         
         //ui
         RefreshUI();
-        _timerCircularImage.fillAmount = _currentTimeOfWave / _totalTimeOfWave;
     }
 
     private void SpawnEnemy(GameObject enemy)
     {
         GameObject spawnedEnemy = Instantiate(enemy, _pathManager.Departure.transform.position, Quaternion.identity);
         Enemy enemyScript = spawnedEnemy.GetComponent<Enemy>();
-        float timeForEnemyToCompletePath = _pathManager.TilePath.Count * _currentWave.EnemiesSpeedToWalkATile;
+
+        float timeForEnemyToCompletePath = _pathManager.TilePath.Count *
+                                           _waveList[_currentRound-1].EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
+        
         enemyScript.Timer = timeForEnemyToCompletePath;
+        
         enemyScript.TilePath = _pathManager.TilePath;
-        enemyScript.MoveTime = _currentWave.EnemiesSpeedToWalkATile;
+        enemyScript.MoveTime = _currentWave.EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
     }
 
     public void EndOfWave()
     {
         IsAttacking = false;
+        
+        //check win or continue rounds
+        if (_currentRound > 5)
+        {
+            GameManager.Instance.ChangeState(GameState.Win);
+            return;
+        }
         GameManager.Instance.ChangeState(GameState.ManagingDefense);
         _currentEnemy = 0;
         CheckRessources();
@@ -311,12 +358,22 @@ public struct EnemyGroup
 {
     public int AmountOfEnemies;
     public GameObject EnemyType;
+    public float SpeedToCrossOneTile;
+    public float WaitTimeAtEnd;
 
+    public float TimeToCompleteWave(int tile)
+    {
+        return tile * SpeedToCrossOneTile + AmountOfEnemies * SpeedToCrossOneTile;
+    }
+
+    public float TimeToSpawnWave()
+    {
+        return SpeedToCrossOneTile * AmountOfEnemies + SpeedToCrossOneTile * 2;
+    }
 }
 
 [Serializable]
 public struct Wave
 {
-    public float EnemiesSpeedToWalkATile;
     public List<EnemyGroup> EnemyGroupList;
 }
