@@ -30,7 +30,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [SerializeField] private List<Wave> _waveList = new List<Wave>();
 
     [Space(10), ReadOnly, Header("Debug")] public bool IsPlacingCard;
-    public Card SelectedCard;
+    [ReadOnly] public Card SelectedCard;
 
     private Wave _currentWave;
     [ReadOnly, SerializeField] private float _totalTimeOfWave;
@@ -53,11 +53,17 @@ public class RoundsAndDefenseManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.CurrentGameState != GameState.ManagingDefense &&
+            GameManager.Instance.CurrentGameState != GameState.Attack)
+        {
+            return;
+        }
+        
         if (IsPlacingCard == false)
         {
             AddOrRemoveAnts();
         }
-
+        
         ManageCardSelection();
 
         if (IsAttacking)
@@ -70,7 +76,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
 
     #region Methods
 
-    private void RefreshUI()
+    public void RefreshUI()
     {
         _leafNumberText.text = NumberOfLeafs.ToString();
         _antNumberText.text = $"{NumberOfAvailaibleAnts}/{NumberOfAnts}";
@@ -237,7 +243,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
         
         //enemy spawn
         _currentSpawnEnemyTime -= Time.deltaTime;
-        if (_currentSpawnEnemyTime <= 0 && _currentEnemy < _enemyWaveList.Count)
+        if (_currentSpawnEnemyTime <= 0 && _currentEnemy < _enemyWaveList.Count && IsAttacking)
         {
             SpawnEnemy(_enemyWaveList[_currentEnemy]);
             _currentEnemy++;
@@ -261,9 +267,24 @@ public class RoundsAndDefenseManager : MonoBehaviour
 
     private void EndOfWave()
     {
-        _currentEnemy = 0;
         IsAttacking = false;
         GameManager.Instance.ChangeState(GameState.ManagingDefense);
+        _currentEnemy = 0;
+        CheckRessources();
+    }
+
+    private void CheckRessources()
+    {
+        List<Building> list = GameManager.Instance.BuildingList;
+        foreach (Building building in list)
+        {
+            RessourceBuilding ressourceBuilding = building.GetComponent<RessourceBuilding>();
+            if (building.CanBeUsed && ressourceBuilding != null && building.IsUsed)
+            {
+                NumberOfLeafs++;
+            }
+        }
+        RefreshUI();
     }
 
     #endregion

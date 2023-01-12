@@ -331,7 +331,7 @@ MonoBehaviour:
   _lifeImage: {fileID: 4755851212653650417}
   _life: 20
   Damage: 5
-  _offsetY: 0.5
+  _offsetY: 1
   Timer: 0
   TilePath: []
   MoveTime: 0

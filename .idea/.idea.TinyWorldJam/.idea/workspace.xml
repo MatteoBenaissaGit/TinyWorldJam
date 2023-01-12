@@ -3,18 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4eb72d-7d11-49f1-b6bc-daef4dcc7b2b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TinyWorldJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TinyWorldJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Fillbar_01_Block.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Fillbar_01_Block.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Fillbar_01_Hollow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Fillbar_01_Hollow.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Filler_01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/GUI_basic/UI_Flat_Filler_01.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Arrival.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Arrival.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/EnemyBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/EnemyBase.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/Arrival.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/Arrival.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673442673234</updated>
       <workItem from="1673442675651" duration="11807000" />
-      <workItem from="1673461092959" duration="35686000" />
+      <workItem from="1673461092959" duration="37245000" />
     </task>
     <servers />
   </component>

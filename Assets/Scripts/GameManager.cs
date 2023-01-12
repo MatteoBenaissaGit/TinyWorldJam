@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
     #region Variables
 
     [Header("Referencing"), SerializeField] private MapManager _mapManager;
-    [Header("Referencing"), SerializeField] private PathManager _pathManager;
-    [Header("Referencing"), SerializeField] private RoundsAndDefenseManager roundsAndDefenseManager;
+    [SerializeField] public PathManager PathManager;
+    [SerializeField] private RoundsAndDefenseManager _roundsAndDefenseManager;
     [SerializeField] private GameObject _pathCreationUI;
     [SerializeField] private GameObject _selectionUI;
     [SerializeField] private GameObject _defenseUI;
@@ -232,8 +232,9 @@ public class GameManager : MonoBehaviour
 
     public void EnemyAttainArrival(Enemy enemy)
     {
-        _pathManager.Arrival.SetLife(enemy.Damage);
-        roundsAndDefenseManager.LifeBarImage.fillAmount = _pathManager.Arrival.CurrentLife / _pathManager.Arrival.Life;
+        PathManager.Arrival.SetLife(-enemy.Damage);
+        _roundsAndDefenseManager.LifeBarImage.fillAmount = PathManager.Arrival.CurrentLife / PathManager.Arrival.Life;
+        _roundsAndDefenseManager.RefreshUI();
     }
 
     #endregion

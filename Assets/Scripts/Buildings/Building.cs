@@ -85,7 +85,7 @@ public class Building : MonoBehaviour
 
     public void ShowAntUI()
     {
-        if (_antsUI == null || _antsUI.activeInHierarchy)
+        if (_antsUI == null || _antsUI.activeInHierarchy || GameManager.Instance.CurrentGameState != GameState.ManagingDefense)
         {
             return;
         }

@@ -2809,8 +2809,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapManager: {fileID: 1979339816}
-  _pathManager: {fileID: 1776678510}
-  roundsAndDefenseManager: {fileID: 268639435}
+  PathManager: {fileID: 1776678510}
+  _roundsAndDefenseManager: {fileID: 268639435}
   _pathCreationUI: {fileID: 531949849}
   _selectionUI: {fileID: 962919873}
   _defenseUI: {fileID: 1223250419}
@@ -2873,7 +2873,7 @@ MonoBehaviour:
   _waveList:
   - EnemiesSpeedToWalkATile: 1
     EnemyGroupList:
-    - AmountOfEnemies: 10
+    - AmountOfEnemies: 5
       EnemyType: {fileID: 4755851212166958379, guid: 9069fb285446f1a45a99001ad9a78300, type: 3}
   IsPlacingCard: 0
   SelectedCard: {fileID: 0}
@@ -2884,7 +2884,6 @@ MonoBehaviour:
   _enemyWaveList: []
   _currentEnemy: 0
   IsAttacking: 0
-  ENEMYLISTTEMP: []
 --- !u!1 &280151137
 GameObject:
   m_ObjectHideFlags: 0

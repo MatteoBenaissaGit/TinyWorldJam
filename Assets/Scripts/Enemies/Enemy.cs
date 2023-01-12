@@ -36,10 +36,10 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < TilePath.Count - 1; i++)
         {
             sequence.Append(
-                transform.DOMove(TilePath[i + 1].transform.position + new Vector3(0, _offsetY, 0), MoveTime))
-                .SetEase(Ease.Linear);
+                    transform.DOMove(TilePath[i + 1].transform.position + new Vector3(0, _offsetY, 0), MoveTime).SetEase(Ease.Linear));
         }
 
+        sequence.OnComplete(AttainedArrival);
         sequence.Play();
     }
 
@@ -65,10 +65,6 @@ public class Enemy : MonoBehaviour
         _life += value;
         _lifeImage.DOComplete();
         _lifeImage.DOFillAmount(_currentLife / _life, 0.1f);
-    }
-
-    private void GoToNextTile()
-    {
     }
 
     private void AttainedArrival()
