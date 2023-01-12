@@ -10,4 +10,5 @@ public class CardInfo : ScriptableObject
     public int Cost;
     public Sprite Image;
     public Building CardBuilding;
+    public GameObject PreviewBuilding;
 }

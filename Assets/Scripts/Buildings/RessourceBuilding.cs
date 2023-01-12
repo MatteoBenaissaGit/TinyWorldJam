@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RessourceBuilding : Building
 {
     [Header("Referencing"), SerializeField] private Image _fillImage;
+    [SerializeField] private GameObject _ant;
     [Header("Parameters"), Range(0, 10)] public int RessourcePerRound = 1;
 
     private void Start()
@@ -17,6 +18,7 @@ public class RessourceBuilding : Building
     private void UpdateUI()
     {
         _fillImage.gameObject.SetActive(IsUsed);
+        _ant.SetActive(IsUsed);
     }
 
     public override void Use()

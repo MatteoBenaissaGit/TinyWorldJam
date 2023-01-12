@@ -17,6 +17,9 @@ public class Tile : MonoBehaviour
     [ReadOnly] public Building OccupierBuilding;
     [ReadOnly] public bool IsSelected;
     [ReadOnly] public bool IsSuggested;
+    [ReadOnly] public bool IsPreviewed;
+
+    private GameObject _previewBuilding;
 
     #endregion
 
@@ -31,6 +34,17 @@ public class Tile : MonoBehaviour
     private void Start()
     {
         _baseSuggestionScale = _suggestion.transform.localScale;
+    }
+
+    private void Update()
+    {
+        if ((IsPreviewed && GameManager.Instance.SelectedTile != this) ||
+            (IsOccupied && IsPreviewed))
+        {
+            Destroy(_previewBuilding);
+            _previewBuilding = null;
+            IsPreviewed = false;
+        }
     }
 
     #endregion
@@ -142,6 +156,18 @@ public class Tile : MonoBehaviour
         IsOccupied = true;
         OccupierBuilding = building;
         building.TileOccupied = this;
+    }
+
+    public void SetPreviewBuilding(GameObject previewBuilding, float offsetY)
+    {
+        if (IsOccupied || IsPreviewed)
+        {
+            return;
+        }
+        
+        _previewBuilding = Instantiate(previewBuilding, transform.position + Vector3.up + new Vector3(0,offsetY,0), Quaternion.identity);
+        _previewBuilding.transform.SetParent(transform);
+        IsPreviewed = true;
     }
 
     #endregion

@@ -23,17 +23,24 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
     private void Start()
     {
         _baseY = transform.position.y;
-        SetupCard();
+        SetupCard(false);
     }
     
-    public void SetupCard()
+    public void SetupCard(bool animate)
     {
         _cardImage.sprite = CardInfoData.Image;
         _nameText.text = CardInfoData.Name;
         _leafCostText.text = CardInfoData.Cost.ToString();
-        
-        transform.DOComplete();
-        transform.DOMoveY(_baseY - 250, 0.5f).OnComplete(StartAnimationUp);
+
+        if (animate)
+        {
+            transform.DOComplete();
+            transform.DOMoveY(_baseY - 250, 0.5f).OnComplete(StartAnimationUp);
+        }
+        else
+        {
+            MakeCardSelectable();
+        }
     }
 
     private void StartAnimationUp()

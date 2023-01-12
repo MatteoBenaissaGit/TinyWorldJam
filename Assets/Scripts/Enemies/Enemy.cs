@@ -54,6 +54,10 @@ public class Enemy : MonoBehaviour
 
     public void SetLife(float value)
     {
+        _currentLife += value;
+        _lifeImage.DOComplete();
+        _lifeImage.DOFillAmount(_currentLife / _life, 0.1f);
+        
         if (_currentLife < _life)
         {
             _lifeUI.SetActive(true);
@@ -62,9 +66,25 @@ public class Enemy : MonoBehaviour
             _lifeUI.transform.DOScale(scale, 0.3f);
         }
 
-        _life += value;
-        _lifeImage.DOComplete();
-        _lifeImage.DOFillAmount(_currentLife / _life, 0.1f);
+        if (_currentLife <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        transform.DOKill();
+        transform.DOScale(Vector3.zero, 0.3f).OnComplete(DestroyItself);
+        if (FindObjectsOfType<Enemy>().Length <= 1)
+        {
+            GameManager.Instance.RoundsAndDefenseManager.EndOfWave();
+        }
+    }
+
+    private void DestroyItself()
+    {
+        Destroy(gameObject);
     }
 
     private void AttainedArrival()
