@@ -16,7 +16,7 @@ public class RessourceBuilding : Building
     
     private void UpdateUI()
     {
-        _fillImage.gameObject.SetActive(isUsed);
+        _fillImage.gameObject.SetActive(IsUsed);
     }
 
     public override void Use()

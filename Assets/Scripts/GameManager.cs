@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         SelectTiles();
         SelectionOnOffCheck();
+        ShowAntUIBuilding();
     }
 
     #endregion
@@ -104,12 +105,9 @@ public class GameManager : MonoBehaviour
         //UIs
         _pathCreationUI.SetActive(CurrentGameState == GameState.PlacingPath);
         _roundsUI.SetActive(CurrentGameState == GameState.ManagingDefense);
-        if (CurrentGameState == GameState.ManagingDefense)
+        if (CurrentGameState != GameState.ManagingDefense)
         {
-            BuildingList.ForEach(x => x.ShowAntUI());
-        }
-        else
-        {
+            BuildingList = FindObjectsOfType<Building>().ToList();
             BuildingList.ForEach(x => x.HideAntUI());
         }
     }
@@ -213,6 +211,16 @@ public class GameManager : MonoBehaviour
     {
         _selectionUI.transform.DOComplete();
         _selectionUI.transform.DOShakePosition(0.25f, new Vector3(0.2f,0,0.2f), 25, 0);
+    }
+
+    private void ShowAntUIBuilding()
+    {
+        if (SelectedTile != null && 
+            SelectedTile.OccupierBuilding != null &&
+            SelectedTile.OccupierBuilding.CanBeUsed)
+        {
+            SelectedTile.OccupierBuilding.ShowAntUI();
+        }
     }
 
     #endregion

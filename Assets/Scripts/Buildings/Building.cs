@@ -10,16 +10,24 @@ public class Building : MonoBehaviour
     [Header("Referencing"), SerializeField] private GameObject _antsUI;
     [Header("Gizmos"), SerializeField] private bool _hideGizmos;
     [Space(10), Header("Tile"), ReadOnly] public Tile TileOccupied;
-    [Space(10), Header("Ant & usability")] public bool canBeUsed = false;
-    [ReadOnly] public bool isUsed = false;
-    public int maxAntsInBuilding = 1;
-    [ReadOnly] public int currentAntsInBuilding = 0;
+    [Space(10), Header("Ant & usability")] public bool CanBeUsed = false;
+    [ReadOnly] public bool IsUsed = false;
+    public int MaxAntsInBuilding = 1;
+    [ReadOnly] public int CurrentAntsInBuilding = 0;
 
     private void Start()
     {
         if (_antsUI != null)
         {
             _antsUI.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (CanBeUsed && GameManager.Instance.SelectedTile != TileOccupied && _antsUI.activeInHierarchy)
+        {
+            HideAntUI();
         }
     }
 
@@ -33,38 +41,58 @@ public class Building : MonoBehaviour
     
     public virtual void Use()
     {
-        if (isUsed || currentAntsInBuilding >= maxAntsInBuilding)
+        if ((IsUsed && MaxAntsInBuilding <= 1) || CurrentAntsInBuilding+1 > MaxAntsInBuilding)
         {
             return;
         }
 
-        currentAntsInBuilding++;
-        isUsed = true;
+        CurrentAntsInBuilding++;
+        IsUsed = true;
     }
 
     public virtual void Unuse()
     {
-        if (isUsed == false || currentAntsInBuilding <= 0)
+        if (IsUsed == false || CurrentAntsInBuilding <= 0)
         {
             return;
         }
 
-        currentAntsInBuilding--;
-        if (currentAntsInBuilding <= 0)
+        CurrentAntsInBuilding--;
+        if (CurrentAntsInBuilding <= 0)
         {
-            isUsed = false;
+            IsUsed = false;
         }
+    }
+
+    private bool _use = true;
+    public bool HaveToUse(int currentNumberOfAnts)
+    {
+        if (_use &&(
+            CurrentAntsInBuilding >= MaxAntsInBuilding ||
+            currentNumberOfAnts <= 0))
+        {
+            _use = false;
+        }
+
+        if (_use == false &&
+            CurrentAntsInBuilding == 0)
+        {
+            _use = true;
+        }
+        
+        return _use;
     }
 
     public void ShowAntUI()
     {
-        if (_antsUI == null)
+        if (_antsUI == null || _antsUI.activeInHierarchy)
         {
             return;
         }
         
         _antsUI.SetActive(true);
         _antsUI.transform.DOComplete();
+        _antsUI.transform.localScale = Vector3.zero;
         _antsUI.transform.DOScale(Vector3.one, 0.25f);
     }
 
