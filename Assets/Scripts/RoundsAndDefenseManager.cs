@@ -19,6 +19,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [SerializeField] private GameObject _cancelCardButton;
     [SerializeField] private Button _startRoundButton;
     [SerializeField] public Image LifeBarImage;
+    [SerializeField] private Image _lifeBarDefenseImage;
     [SerializeField] private Image _timerCircularImage;
     [SerializeField] private PathManager _pathManager;
 
@@ -49,6 +50,8 @@ public class RoundsAndDefenseManager : MonoBehaviour
     {
         NumberOfAvailaibleAnts = NumberOfAnts;
         RefreshUI();
+        LifeBarImage.fillAmount = 1;
+        _lifeBarDefenseImage.fillAmount = 1;
     }
 
     private void Update()
@@ -87,7 +90,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
 
         if (_pathManager.Arrival != null)
         {
-            LifeBarImage.fillAmount = _pathManager.Arrival.CurrentLife / _pathManager.Arrival.Life;
+            _lifeBarDefenseImage.fillAmount = _pathManager.Arrival.CurrentLife / _pathManager.Arrival.Life;
         }
     }
 
@@ -163,13 +166,16 @@ public class RoundsAndDefenseManager : MonoBehaviour
         if (tile != null &&
             tile.IsOccupied == false &&
             IsPlacingCard && SelectedCard != null & SelectedCard.CardInfoData.CardBuilding != null &&
-            SelectedCard.CardInfoData.Cost <= NumberOfLeafs &&
-            Input.GetMouseButtonDown(0))
+            SelectedCard.CardInfoData.Cost <= NumberOfLeafs)
         {
-            NumberOfLeafs -= SelectedCard.CardInfoData.Cost;
-            RefreshUI();
-            tile.SetBuilding(SelectedCard.CardInfoData.CardBuilding, -0.4f);
-            UseCard(SelectedCard);
+            tile.SetPreviewBuilding(SelectedCard.CardInfoData.PreviewBuilding, -0.4f);
+            if (Input.GetMouseButtonDown(0))
+            {
+                NumberOfLeafs -= SelectedCard.CardInfoData.Cost;
+                RefreshUI();
+                tile.SetBuilding(SelectedCard.CardInfoData.CardBuilding, -0.4f);
+                UseCard(SelectedCard);
+            }
         }
     }
 
@@ -185,7 +191,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
         UnselectCard();
         //change card
         card.CardInfoData = GetRandomCard();
-        card.SetupCard();
+        card.SetupCard(true);
     }
 
     private CardInfo GetRandomCard()
@@ -205,6 +211,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
         {
             return;
         }
+        GameManager.Instance.ChangeState(GameState.Attack);
         
         //calculate wave
         _currentWave = _waveList[_currentRound];
@@ -224,10 +231,19 @@ public class RoundsAndDefenseManager : MonoBehaviour
         _spawnEnemyTime = _currentWave.EnemiesSpeedToWalkATile;
         _currentSpawnEnemyTime = _spawnEnemyTime;
         
+        //attack towers
+        foreach (Building building in GameManager.Instance.BuildingList)
+        {
+            AttackBuilding attackBuilding = building.GetComponent<AttackBuilding>();
+            if (attackBuilding != null)
+            {
+                attackBuilding.Launch();
+            }
+        }
+        
         //ui & state
         _currentRound++;
         RefreshUI();
-        GameManager.Instance.ChangeState(GameState.Attack);
         
         IsAttacking = true;
     }
@@ -265,7 +281,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
         enemyScript.MoveTime = _currentWave.EnemiesSpeedToWalkATile;
     }
 
-    private void EndOfWave()
+    public void EndOfWave()
     {
         IsAttacking = false;
         GameManager.Instance.ChangeState(GameState.ManagingDefense);

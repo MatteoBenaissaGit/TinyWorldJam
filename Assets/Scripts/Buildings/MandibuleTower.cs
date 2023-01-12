@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MandibuleTower : Building
 {
     [Header("Referencing"), SerializeField] private List<Image> _fillImagesList;
+    [SerializeField] private List<GameObject> _antList;
     [Header("Parameters"), Range(0, 100)] public float AttackDamagePerAnt = 1;
 
     private void Start()
@@ -20,6 +21,7 @@ public class MandibuleTower : Building
         for (int i = 0; i < MaxAntsInBuilding; i++)
         {
             _fillImagesList[i].gameObject.SetActive(i < CurrentAntsInBuilding);
+            _antList[i].SetActive(i < CurrentAntsInBuilding);
         }
     }
 

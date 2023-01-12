@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed4eb72d-7d11-49f1-b6bc-daef4dcc7b2b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
-    </list>
+    <list default="true" id="ed4eb72d-7d11-49f1-b6bc-daef4dcc7b2b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,10 +9,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTower.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/RessourceBuilding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/Water.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tiles/MapManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -56,7 +51,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.5f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity2020\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\mbenaissa\Documents\TinyWorldJam -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\mbenaissa\Documents\TinyWorldJam" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -73,10 +68,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="22272">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20784">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="22272" />
+      <option name="pid" value="20784" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -94,6 +89,7 @@
       <updated>1673442673234</updated>
       <workItem from="1673442675651" duration="11807000" />
       <workItem from="1673461092959" duration="37278000" />
+      <workItem from="1673511158422" duration="12698000" />
     </task>
     <servers />
   </component>
@@ -116,6 +112,30 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTowerAttack.cs</url>
+          <line>35</line>
+          <properties documentPath="C:\Users\mbenaissa\Documents\TinyWorldJam\Assets\Scripts\Buildings\MandibuleTowerAttack.cs" initialLine="21" containingFunctionPresentation="method 'Update'">
+            <startOffsets>
+              <option value="1210" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1249" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Frame#AttackBuilding.LaunchAttack" memberName="hits" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -16,3 +16,4 @@ MonoBehaviour:
   Cost: 3
   Image: {fileID: 21300000, guid: 42b2bff47995cea43bd9e35386d41c58, type: 3}
   CardBuilding: {fileID: 4481352474378457724, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+  PreviewBuilding: {fileID: 2024084727442136357, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}

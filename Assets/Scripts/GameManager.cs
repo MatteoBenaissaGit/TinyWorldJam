@@ -4,6 +4,7 @@ using System.Linq;
 using Buildings;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Referencing"), SerializeField] private MapManager _mapManager;
     [SerializeField] public PathManager PathManager;
-    [SerializeField] private RoundsAndDefenseManager _roundsAndDefenseManager;
+    [SerializeField] public RoundsAndDefenseManager RoundsAndDefenseManager;
     [SerializeField] private GameObject _pathCreationUI;
     [SerializeField] private GameObject _selectionUI;
     [SerializeField] private GameObject _defenseUI;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     [ReadOnly] public Tile SelectedTile;
     
     [HideInInspector] public Tile[,] TileArray = new Tile[,]{};
-    [HideInInspector] public List<Building> BuildingList = new List<Building>();
+    [ReadOnly] public List<Building> BuildingList = new List<Building>();
 
     #endregion
 
@@ -103,6 +104,14 @@ public class GameManager : MonoBehaviour
         }
 
         CurrentGameState = gameState;
+        
+        //list update
+        //build list creation
+        foreach (Building building in FindObjectsOfType<Building>())
+        {
+            BuildingList.Add(building);
+        }
+
         
         //UIs
         _pathCreationUI.SetActive(CurrentGameState == GameState.PlacingPath);
@@ -233,8 +242,8 @@ public class GameManager : MonoBehaviour
     public void EnemyAttainArrival(Enemy enemy)
     {
         PathManager.Arrival.SetLife(-enemy.Damage);
-        _roundsAndDefenseManager.LifeBarImage.fillAmount = PathManager.Arrival.CurrentLife / PathManager.Arrival.Life;
-        _roundsAndDefenseManager.RefreshUI();
+        RoundsAndDefenseManager.LifeBarImage.DOFillAmount(PathManager.Arrival.CurrentLife / (float)PathManager.Arrival.Life, 0.2f);
+        RoundsAndDefenseManager.RefreshUI();
     }
 
     #endregion
