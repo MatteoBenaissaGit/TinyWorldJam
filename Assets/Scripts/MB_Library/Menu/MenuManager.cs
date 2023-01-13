@@ -101,7 +101,6 @@ namespace Menu
             _buttonManagerList.Add(SimpleMenuReferences.QuitButton);
             _buttonManagerList.Add(SideSlideMenuReferences.PlayButton);
             _buttonManagerList.Add(SideSlideMenuReferences.CreditsButton);
-            _buttonManagerList.Add(SideSlideMenuReferences.QuitButton);
         }
 
         #region Methods
