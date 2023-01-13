@@ -2,35 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed4eb72d-7d11-49f1-b6bc-daef4dcc7b2b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TinyWorldJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TinyWorldJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/Placeholders/MandibuleTowerBlockMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Materials/Placeholders/MandibuleTowerBlockMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/EnemyBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/EnemyBase.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/EnemyFly.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/EnemyFly.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MandibuleProjectile.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MandibuleProjectile.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MandibuleTower.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MandibuleTower.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MandibuleTowerPreview.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MandibuleTowerPreview.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/RessourceBuilding.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/RessourceBuilding.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TilePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TilePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ArtScene_Habillage.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ArtScene_Habillage.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/Arrival.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/Arrival.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/AttackBuilding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/AttackBuilding.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTowerAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/MandibuleTowerAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/RessourceBuilding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/RessourceBuilding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/---CORE---.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/---CORE---.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/Card.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo_AntTower.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo_AntTower.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo_MandibuleTower.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo_MandibuleTower.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tiles/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tiles/Tile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +98,7 @@
       <workItem from="1673442675651" duration="11807000" />
       <workItem from="1673461092959" duration="37278000" />
       <workItem from="1673511158422" duration="22631000" />
-      <workItem from="1673560761877" duration="7569000" />
+      <workItem from="1673560761877" duration="11488000" />
     </task>
     <servers />
   </component>
@@ -154,10 +130,10 @@
           <line>184</line>
           <properties documentPath="C:\Users\benma\Documents\TinyWorldJam\Assets\Scripts\GameManager.cs" initialLine="184" containingFunctionPresentation="method 'Neighbours'">
             <startOffsets>
-              <option value="5164" />
+              <option value="5172" />
             </startOffsets>
             <endOffsets>
-              <option value="5224" />
+              <option value="5232" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
