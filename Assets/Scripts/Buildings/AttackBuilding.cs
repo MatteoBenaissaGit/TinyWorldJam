@@ -14,7 +14,7 @@ public class AttackBuilding : MonoBehaviour
     [Header("Attack"), SerializeField] private float _range;
     [SerializeField] protected float Damage;
     [SerializeField] private float _cooldown;
-    [SerializeField, Range(0,1)] protected float ProjectileSpeed = 0.03f;
+    [SerializeField, Range(0,10)] protected float ProjectileSpeed = 0.03f;
     [SerializeField] private bool _showGizmos;
     [SerializeField] private LayerMask _layerMask;
 

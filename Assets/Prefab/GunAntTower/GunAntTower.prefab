@@ -78,7 +78,7 @@ MonoBehaviour:
   _range: 5
   Damage: 10
   _cooldown: 1
-  ProjectileSpeed: 0.05
+  ProjectileSpeed: 6
   _showGizmos: 1
   _layerMask:
     serializedVersion: 2

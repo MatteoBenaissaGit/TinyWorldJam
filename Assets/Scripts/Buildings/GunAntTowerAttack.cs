@@ -29,7 +29,7 @@ public class GunAntTowerAttack : AttackBuilding
             Vector3 enemyPosition = projectile.EnemyToAim.transform.position;
             
             projectile.ProjectileLaunched.transform.position =
-                Vector3.MoveTowards(position, enemyPosition, ProjectileSpeed);
+                Vector3.MoveTowards(position, enemyPosition, ProjectileSpeed * Time.deltaTime);
             
             if (Vector3.Distance(position, enemyPosition) < 0.1f)
             {

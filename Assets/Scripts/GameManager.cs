@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
         _loseUI.SetActive(CurrentGameState == GameState.Lose);
         if (CurrentGameState != GameState.ManagingDefense)
         {
+            BuildingList.Clear();
             BuildingList = FindObjectsOfType<Building>().ToList();
             BuildingList.ForEach(x => x.HideAntUI());
         }
@@ -201,14 +202,14 @@ public class GameManager : MonoBehaviour
 
     private void SelectionOnOffCheck()
     {
-        if (SelectedTile != null && _selectionUI.activeInHierarchy == false)
+        if (SelectedTile != null && _selectionUI.activeInHierarchy == false && RoundsAndDefenseManager.OnHoverCard == false)
         {
             _selectionUI.SetActive(true);
             _selectionUI.transform.localScale = Vector3.zero;
             _selectionUI.transform.DOComplete();
             _selectionUI.transform.DOScale(Vector3.one, 0.2f);
         }
-        if (SelectedTile == null && _selectionUI.activeInHierarchy)
+        if ((SelectedTile == null || RoundsAndDefenseManager.OnHoverCard) && _selectionUI.activeInHierarchy)
         {
             _selectionUI.transform.DOComplete();
             _selectionUI.transform.DOScale(Vector3.zero, 0.1f).OnComplete(DeactivateSelection);

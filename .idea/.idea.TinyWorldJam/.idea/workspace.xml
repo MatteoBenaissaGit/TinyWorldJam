@@ -45,6 +45,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/ColonyClashBuild\Colony Clash.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\mbenaissa\Desktop\ColonyClashBuild" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity2020\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\mbenaissa\Documents\TinyWorldJam -debugCodeOptimization" />
@@ -94,7 +102,7 @@
       <workItem from="1673461092959" duration="37278000" />
       <workItem from="1673511158422" duration="22631000" />
       <workItem from="1673560761877" duration="11488000" />
-      <workItem from="1673597837372" duration="7723000" />
+      <workItem from="1673597837372" duration="9893000" />
     </task>
     <servers />
   </component>

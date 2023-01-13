@@ -337,8 +337,8 @@ MonoBehaviour:
   Projectile: {fileID: 4693732606581902858, guid: 0336d38779352c649accd53efae315d1, type: 3}
   _range: 3
   Damage: 4
-  _cooldown: 0.5
-  ProjectileSpeed: 0.03
+  _cooldown: 0.75
+  ProjectileSpeed: 4
   _showGizmos: 1
   _layerMask:
     serializedVersion: 2

@@ -16,8 +16,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
     [SerializeField] private TextMeshProUGUI _leafCostText;
     [SerializeField] private RoundsAndDefenseManager _roundsAndDefenseManager;
     [ReadOnly] public bool CanBeSelected;
-
-
+    
     private float _baseY;
     
     private void Start()
@@ -26,7 +25,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         CardInfoData = GameManager.Instance.RoundsAndDefenseManager.GetRandomCard();
         SetupCard(false);
     }
-    
+
     public void SetupCard(bool animate)
     {
         if (animate)
@@ -65,6 +64,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         if (CanBeSelected && _roundsAndDefenseManager.IsPlacingCard == false)
         {
             AnimateUp(15);
+            _roundsAndDefenseManager.OnHoverCard = true;
         }
     }
 
@@ -78,6 +78,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
                 {
                     _roundsAndDefenseManager.IsPlacingCard = true;
                     _roundsAndDefenseManager.SelectedCard = this;
+                    _roundsAndDefenseManager.TimeSinceCardSelected = 0.5f;
                     AnimateUp(30);
                 }
 
@@ -108,6 +109,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
             return;
         }
 
+        _roundsAndDefenseManager.OnHoverCard = false;
         AnimateDown();
     }
 

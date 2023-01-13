@@ -35,6 +35,8 @@ public class RoundsAndDefenseManager : MonoBehaviour
 
     [Space(10), ReadOnly, Header("Debug")] public bool IsPlacingCard;
     [ReadOnly] public Card SelectedCard;
+    [ReadOnly] public bool OnHoverCard;
+    [ReadOnly] public float TimeSinceCardSelected;
 
     private Wave _currentWave;
     [FormerlySerializedAs("_totalTimeOfWave")] [ReadOnly, SerializeField] private float _totalNumberOfEnemyGroupInWave;
@@ -61,6 +63,8 @@ public class RoundsAndDefenseManager : MonoBehaviour
 
     private void Update()
     {
+        TimeSinceCardSelected -= Time.deltaTime;
+        
         if (GameManager.Instance.CurrentGameState != GameState.ManagingDefense &&
             GameManager.Instance.CurrentGameState != GameState.Attack)
         {
@@ -171,13 +175,14 @@ public class RoundsAndDefenseManager : MonoBehaviour
         if (tile != null &&
             tile.IsOccupied == false &&
             IsPlacingCard && SelectedCard != null & SelectedCard.CardInfoData.CardBuilding != null &&
-            SelectedCard.CardInfoData.Cost <= NumberOfLeafs)
+            SelectedCard.CardInfoData.Cost <= NumberOfLeafs && 
+            TimeSinceCardSelected <= 0)
         {
             if (SelectedCard.CardInfoData.PreviewBuilding != null)
             {
                 tile.SetPreviewBuilding(SelectedCard.CardInfoData.PreviewBuilding, -0.4f);
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 NumberOfLeafs -= SelectedCard.CardInfoData.Cost;
                 RefreshUI();
@@ -342,14 +347,16 @@ public class RoundsAndDefenseManager : MonoBehaviour
     private void CheckRessources()
     {
         List<Building> list = GameManager.Instance.BuildingList;
+        List<Building> alreadySeen = new List<Building>();
         foreach (Building building in list)
         {
             RessourceBuilding ressourceBuilding = building.GetComponent<RessourceBuilding>();
-            if (building.CanBeUsed && ressourceBuilding != null && building.IsUsed)
+            if (building.CanBeUsed && ressourceBuilding != null && building.IsUsed && alreadySeen.Contains(building) == false)
             {
                 ressourceBuilding.LeafParticle.Play();
                 NumberOfLeafs++;
             }
+            alreadySeen.Add(building);
         }
         RefreshUI();
     }
