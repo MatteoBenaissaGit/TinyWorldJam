@@ -4,6 +4,7 @@ using System.Linq;
 using Buildings;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
@@ -51,6 +52,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _selectionUI;
     [SerializeField] private GameObject _defenseUI;
     [SerializeField] private GameObject _roundsAttackUI;
+    [SerializeField] private GameObject _winUI;
+    [SerializeField] private GameObject _loseUI;
 
     [Header("Debug")]
     [ReadOnly] public GameState CurrentGameState = GameState.Start;
@@ -82,7 +85,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(GameState gameState)
     {
-        if (CurrentGameState == gameState)
+        if (CurrentGameState == gameState ||
+            CurrentGameState is GameState.Win or GameState.Lose)
         {
             return;
         }
@@ -117,6 +121,8 @@ public class GameManager : MonoBehaviour
         _pathCreationUI.SetActive(CurrentGameState == GameState.PlacingPath);
         _defenseUI.SetActive(CurrentGameState == GameState.ManagingDefense);
         _roundsAttackUI.SetActive(CurrentGameState == GameState.Attack);
+        _winUI.SetActive(CurrentGameState == GameState.Win);
+        _loseUI.SetActive(CurrentGameState == GameState.Lose);
         if (CurrentGameState != GameState.ManagingDefense)
         {
             BuildingList = FindObjectsOfType<Building>().ToList();
@@ -132,7 +138,7 @@ public class GameManager : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100) && (CurrentGameState is GameState.Win or GameState.Lose == false))
         {
             Tile rayTile = hit.transform.gameObject.GetComponent<Tile>();
             if (rayTile != null)
@@ -244,6 +250,15 @@ public class GameManager : MonoBehaviour
         PathManager.Arrival.SetLife(-enemy.Damage);
         RoundsAndDefenseManager.LifeBarImage.DOFillAmount(PathManager.Arrival.CurrentLife / (float)PathManager.Arrival.Life, 0.2f);
         RoundsAndDefenseManager.RefreshUI();
+    }
+
+    #endregion
+
+    #region Menu methods
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
     #endregion
