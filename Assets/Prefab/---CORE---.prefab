@@ -1291,6 +1291,7 @@ MonoBehaviour:
   _cardsInfos:
   - {fileID: 11400000, guid: 8b3facbd3768cf74daff0b9017137600, type: 2}
   - {fileID: 11400000, guid: 4199eaada24fc8f4fb851c9c09a22341, type: 2}
+  - {fileID: 11400000, guid: f540286944aa6494d959447881397521, type: 2}
   _cancelCardButton: {fileID: 1363365791509121824}
   _startRoundButton: {fileID: 1363365792332163645}
   LifeBarImage: {fileID: 1363365792209424696}

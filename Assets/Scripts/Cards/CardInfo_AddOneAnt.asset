@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d503eb486e4c7c340a850986858fe734, type: 3}
-  m_Name: CardInfo_MandibuleTower
+  m_Name: CardInfo_AddOneAnt
   m_EditorClassIdentifier: 
-  Type: 0
-  Name: Mandibule Tower
+  Type: 1
+  Name: Add One Ant
   Cost: 3
-  Image: {fileID: 21300000, guid: 42b2bff47995cea43bd9e35386d41c58, type: 3}
-  CardBuilding: {fileID: 4481352474378457724, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
-  PreviewBuilding: {fileID: 2024084727442136357, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+  Image: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
+  CardBuilding: {fileID: 0}
+  PreviewBuilding: {fileID: 0}

@@ -173,13 +173,16 @@ public class RoundsAndDefenseManager : MonoBehaviour
             IsPlacingCard && SelectedCard != null & SelectedCard.CardInfoData.CardBuilding != null &&
             SelectedCard.CardInfoData.Cost <= NumberOfLeafs)
         {
-            tile.SetPreviewBuilding(SelectedCard.CardInfoData.PreviewBuilding, -0.4f);
+            if (SelectedCard.CardInfoData.PreviewBuilding != null)
+            {
+                tile.SetPreviewBuilding(SelectedCard.CardInfoData.PreviewBuilding, -0.4f);
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 NumberOfLeafs -= SelectedCard.CardInfoData.Cost;
                 RefreshUI();
                 tile.SetBuilding(SelectedCard.CardInfoData.CardBuilding, -0.4f);
-                UseCard(SelectedCard);
+                UseCard(SelectedCard, true);
             }
         }
     }
@@ -191,12 +194,12 @@ public class RoundsAndDefenseManager : MonoBehaviour
         SelectedCard = null;
     }
 
-    private void UseCard(Card card)
+    public void UseCard(Card card, bool animate)
     {
         UnselectCard();
         //change card
         card.CardInfoData = GetRandomCard();
-        card.SetupCard(true);
+        card.SetupCard(animate);
     }
 
     public CardInfo GetRandomCard()

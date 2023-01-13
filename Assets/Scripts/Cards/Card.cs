@@ -74,9 +74,25 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         {
             if (CardInfoData.Cost <= _roundsAndDefenseManager.NumberOfLeafs)
             {
-                _roundsAndDefenseManager.IsPlacingCard = true;
-                _roundsAndDefenseManager.SelectedCard = this;
-                AnimateUp(30);
+                if (CardInfoData.Type == CardType.Building)
+                {
+                    _roundsAndDefenseManager.IsPlacingCard = true;
+                    _roundsAndDefenseManager.SelectedCard = this;
+                    AnimateUp(30);
+                }
+
+                if (CardInfoData.Type == CardType.Ant)
+                {
+                    _roundsAndDefenseManager.NumberOfLeafs -= CardInfoData.Cost;
+                    _roundsAndDefenseManager.NumberOfAnts ++;
+                    _roundsAndDefenseManager.NumberOfAvailaibleAnts ++;
+                    
+                    _roundsAndDefenseManager.IsPlacingCard = true;
+                    _roundsAndDefenseManager.SelectedCard = this;
+                    _roundsAndDefenseManager.RefreshUI();
+                    CanBeSelected = false;
+                    _roundsAndDefenseManager.UseCard(_roundsAndDefenseManager.SelectedCard, true);
+                }
             }
             else
             {
@@ -97,12 +113,20 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
 
     public void AnimateUp(float value)
     {
+        if (CanBeSelected == false)
+        {
+            return;
+        }
         transform.DOComplete();
         transform.DOMoveY(_baseY + value, 0.3f);
     }
 
     public void AnimateDown()
     {
+        if (CanBeSelected == false)
+        {
+            return;
+        }
         transform.DOComplete();
         transform.DOMoveY(_baseY, 0.15f);
     }
