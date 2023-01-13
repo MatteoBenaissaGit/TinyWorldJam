@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44738376, g: 0.49732476, b: 0.5752541, a: 1}
+  m_IndirectSpecularColor: {r: 0.44738448, g: 0.4973235, b: 0.5752557, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -353,11 +353,77 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
   IsSuggested: 0
   IsPreviewed: 0
+--- !u!1001 &25178438
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 543450652506801769, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.638
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450652506801769, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.799
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9379512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.64282674
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.0067505
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136357, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+      propertyPath: m_Name
+      value: MandibuleTowerPreview
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
 --- !u!1 &27637016
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +738,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -991,6 +1058,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -1375,6 +1443,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -1642,6 +1711,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -1795,6 +1865,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -2043,6 +2114,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -2163,6 +2235,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -2315,6 +2388,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -2762,6 +2836,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -2980,6 +3055,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -3395,6 +3471,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -3548,6 +3625,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -3701,6 +3779,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -3904,6 +3983,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -4024,6 +4104,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -4275,6 +4356,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -4395,6 +4477,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -4547,6 +4630,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -4798,6 +4882,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -5132,6 +5217,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -5252,6 +5338,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -5372,6 +5459,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -5492,6 +5580,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -5759,6 +5848,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -6092,6 +6182,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -6310,6 +6401,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -6612,6 +6704,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -7240,6 +7333,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -7469,7 +7563,7 @@ Transform:
   - {fileID: 959052265}
   - {fileID: 1878731269}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979309478
 GameObject:
@@ -7752,6 +7846,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -7872,6 +7967,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -8340,6 +8436,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -8987,6 +9084,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -9223,6 +9321,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -9375,6 +9474,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -9611,6 +9711,63 @@ Transform:
   m_Father: {fileID: 963904343}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1227418717
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.117432
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.0531054
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136357, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_Name
+      value: GunAntTower (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
 --- !u!1 &1241068263
 GameObject:
   m_ObjectHideFlags: 0
@@ -9990,6 +10147,63 @@ Transform:
   m_Father: {fileID: 1389627187}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1278699358
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.0467246
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9614693
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136357, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_Name
+      value: MandibuleTower (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
 --- !u!1 &1280001784
 GameObject:
   m_ObjectHideFlags: 0
@@ -10138,6 +10352,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -10440,6 +10655,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -10478,6 +10694,63 @@ Transform:
   m_Father: {fileID: 963904343}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1342662793
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.0503993
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.0321681
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136357, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
+      propertyPath: m_Name
+      value: MandibuleTower
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
 --- !u!1 &1348755578
 GameObject:
   m_ObjectHideFlags: 0
@@ -10690,6 +10963,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -11252,6 +11526,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -11487,6 +11762,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -11806,6 +12082,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -11926,11 +12203,69 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
   IsSuggested: 0
   IsPreviewed: 0
+--- !u!1001 &1547896360
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.113699
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3128462
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.045464
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136357, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_Name
+      value: GunAntTowerPreview
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
 --- !u!1 &1572173173
 GameObject:
   m_ObjectHideFlags: 0
@@ -12046,6 +12381,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -12346,6 +12682,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -12466,6 +12803,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -12618,6 +12956,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -12821,6 +13160,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -13006,6 +13346,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -13126,6 +13467,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -13361,6 +13703,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -13514,6 +13857,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -13666,6 +14010,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -13786,6 +14131,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -14203,6 +14549,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -14323,6 +14670,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -14591,6 +14939,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -14924,6 +15273,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -15390,6 +15740,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -15825,6 +16176,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -15945,6 +16297,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -16347,6 +16700,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -16467,6 +16821,63 @@ Transform:
   m_Father: {fileID: 1304406095}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2020714669
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.0613104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3034766
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.9873266
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136357, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
+      propertyPath: m_Name
+      value: GunAntTowerPreview (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
 --- !u!1 &2024298837
 GameObject:
   m_ObjectHideFlags: 0
@@ -16991,6 +17402,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -17260,6 +17672,7 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
@@ -17380,11 +17793,69 @@ MonoBehaviour:
   _departurePrefab: {fileID: 3777131091042533811, guid: 93cf78e281be3f445b4c11ee1993bd08, type: 3}
   _waterPrefab: {fileID: 8651596063991067915, guid: cf6d1749fb7793c41960538be485bb92, type: 3}
   _ressourceBuildingPrefab: {fileID: 8795261779116837979, guid: af4c76e6415b0ee40b77762dba1c0da0, type: 3}
+  SelectParticle: {fileID: 0}
   IsOccupied: 0
   OccupierBuilding: {fileID: 0}
   IsSelected: 0
   IsSuggested: 0
   IsPreviewed: 0
+--- !u!1001 &1526145233020639533
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.0257826
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.0192785
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136352, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024084727442136357, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
+      propertyPath: m_Name
+      value: GunAntTower
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
 --- !u!1001 &8439232000215553172
 PrefabInstance:
   m_ObjectHideFlags: 0
