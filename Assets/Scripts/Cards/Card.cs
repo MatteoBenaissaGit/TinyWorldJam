@@ -117,6 +117,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         {
             return;
         }
+        print("up");
         transform.DOComplete();
         transform.DOMoveY(_baseY + value, 0.3f);
     }
@@ -127,6 +128,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         {
             return;
         }
+        print("down");
         transform.DOComplete();
         transform.DOMoveY(_baseY, 0.15f);
     }
