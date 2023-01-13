@@ -42,6 +42,11 @@ public class Enemy : MonoBehaviour
 
         TweenSequence.OnComplete(AttainedArrival);
         TweenSequence.Play();
+        
+        //anim
+        Vector3 scale = transform.localScale;
+        transform.localScale = Vector3.zero;
+        transform.DOScale(scale, 0.5f);
     }
 
     private void Update()
@@ -58,6 +63,7 @@ public class Enemy : MonoBehaviour
         _currentLife += value;
         _lifeImage.DOComplete();
         _lifeImage.DOFillAmount(_currentLife / _life, 0.1f);
+        transform.DOPunchScale(Vector3.one * 0.2f, .2f);
         
         if (_currentLife < _life && _lifeUI.activeInHierarchy == false)
         {

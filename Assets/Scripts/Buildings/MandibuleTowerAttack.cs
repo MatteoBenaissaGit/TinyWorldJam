@@ -34,7 +34,7 @@ public class MandibuleTowerAttack : AttackBuilding
             if (Vector3.Distance(position, enemyPosition) < 0.1f)
             {
                 projectile.EnemyToAim.SetLife(-Damage);
-                Destroy(projectile.ProjectileLaunched);
+                projectile.ProjectileLaunched.GetComponent<ProjectileParticle>().DestroyParticle();
                 _projectiles.Remove(projectile);
             }
         }

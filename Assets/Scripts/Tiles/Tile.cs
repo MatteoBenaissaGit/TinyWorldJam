@@ -133,12 +133,12 @@ public class Tile : MonoBehaviour
 
     public void SetArrival()
     {
-        SetBuilding(_arrivalPrefab, 0);
+        SetBuilding(_arrivalPrefab, 0.27f);
     }
     
     public void SetDeparture()
     {
-        SetBuilding(_departurePrefab, 0);
+        SetBuilding(_departurePrefab, 0.2f);
     }
     
     public void SetWater()
