@@ -15,6 +15,6 @@ MonoBehaviour:
   Type: 1
   Name: Add One Ant
   Cost: 1
-  Image: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
+  Image: {fileID: 21300000, guid: 52ef5b4767883774fbc2117999958dbc, type: 3}
   CardBuilding: {fileID: 0}
   PreviewBuilding: {fileID: 0}

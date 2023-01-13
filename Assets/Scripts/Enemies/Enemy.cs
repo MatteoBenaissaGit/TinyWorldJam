@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
         _currentLife += value;
         _lifeImage.DOComplete();
         _lifeImage.DOFillAmount(_currentLife / _life, 0.1f);
+        transform.DOComplete();
         transform.DOPunchScale(Vector3.one * 0.2f, .2f);
         
         if (_currentLife < _life && _lifeUI.activeInHierarchy == false)

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d503eb486e4c7c340a850986858fe734, type: 3}
   m_Name: CardInfo_GunAntTower
   m_EditorClassIdentifier: 
+  Type: 0
   Name: Gun Ant Tower
   Cost: 2
-  Image: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  Image: {fileID: 21300000, guid: cbe284218ea6e294fb41e4f6ae3ab8cd, type: 3}
   CardBuilding: {fileID: 6843995465844884082, guid: f55d39604e984294aaf2da623240c5ef, type: 3}
   PreviewBuilding: {fileID: 2024084727442136357, guid: fc6e4e0a1bd50ef478ffdbdca882eb5a, type: 3}
