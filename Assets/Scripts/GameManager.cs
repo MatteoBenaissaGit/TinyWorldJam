@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-    #region Singleton
+    #region Singleton & Awake
 
     public static GameManager Instance;
 
@@ -22,6 +22,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(Instance);
             Instance = this;
+        }
+        
+        //tile list creation
+        Tile[] array = FindObjectsOfType<Tile>();
+        TileArray = new Tile[(int)_mapManager.GridSize.x, (int)_mapManager.GridSize.y];
+        foreach (Tile tile in array)
+        {
+            Vector3 position = tile.transform.position;
+            tile.gameObject.transform.parent.gameObject.name = $"{(int)position.x}.{(int)position.z}";
+            TileArray[(int)position.x, (int)position.z] = tile;
+        }
+        //build list creation
+        foreach (Building building in FindObjectsOfType<Building>())
+        {
+            BuildingList.Add(building);
         }
     }
 
@@ -50,21 +65,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //tile list creation
-        Tile[] array = FindObjectsOfType<Tile>();
-        TileArray = new Tile[(int)_mapManager.GridSize.x, (int)_mapManager.GridSize.y];
-        foreach (Tile tile in array)
-        {
-            Vector3 position = tile.transform.position;
-            tile.gameObject.transform.parent.gameObject.name = $"{(int)position.x}.{(int)position.z}";
-            TileArray[(int)position.x, (int)position.z] = tile;
-        }
-        //build list creation
-        foreach (Building building in FindObjectsOfType<Building>())
-        {
-            BuildingList.Add(building);
-        }
-        
         //state
         ChangeState(GameState.PlacingPath);
     }

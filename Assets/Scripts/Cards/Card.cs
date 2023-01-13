@@ -23,15 +23,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
     private void Start()
     {
         _baseY = transform.position.y;
+        CardInfoData = GameManager.Instance.RoundsAndDefenseManager.GetRandomCard();
         SetupCard(false);
     }
     
     public void SetupCard(bool animate)
     {
-        _cardImage.sprite = CardInfoData.Image;
-        _nameText.text = CardInfoData.Name;
-        _leafCostText.text = CardInfoData.Cost.ToString();
-
         if (animate)
         {
             transform.DOComplete();
@@ -39,14 +36,23 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         }
         else
         {
+            ChangeValues();
             MakeCardSelectable();
         }
+    }
+
+    private void ChangeValues()
+    {
+        _cardImage.sprite = CardInfoData.Image;
+        _nameText.text = CardInfoData.Name;
+        _leafCostText.text = CardInfoData.Cost.ToString();
     }
 
     private void StartAnimationUp()
     {
         transform.DOComplete();
         transform.DOMoveY(_baseY, 1f).OnComplete(MakeCardSelectable);
+        ChangeValues();
     }
 
     private void MakeCardSelectable()

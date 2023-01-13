@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,6 +14,7 @@ public class AttackBuilding : MonoBehaviour
     [Header("Attack"), SerializeField] private float _range;
     [SerializeField] protected float Damage;
     [SerializeField] private float _cooldown;
+    [SerializeField, Range(0,1)] protected float ProjectileSpeed = 0.03f;
     [SerializeField] private bool _showGizmos;
     [SerializeField] private LayerMask _layerMask;
 
@@ -61,7 +63,7 @@ public class AttackBuilding : MonoBehaviour
         foreach (RaycastHit ray in hits)
         {
             Enemy enemy = ray.collider.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
+            if (enemy != null && enemy.CanBeTargeted)
             {
                 enemiesInRange.Add(enemy);
             }
@@ -72,6 +74,10 @@ public class AttackBuilding : MonoBehaviour
         {
             Enemy enemy = enemiesInRange.ToList().OrderBy(x => Vector3.Distance(transform.position, x.transform.position)).First();
             LaunchAttack(startPosition, enemy);
+            
+            //anim
+            _attackOrigins[origin].DOComplete();
+            _attackOrigins[origin].DOPunchScale(Vector3.one * 0.15f, 0.2f);
         }
     }
 

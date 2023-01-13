@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace Buildings
 {
@@ -21,10 +22,17 @@ namespace Buildings
             {
                 Die();
             }
+            else
+            {
+                transform.DOComplete();
+                transform.DOPunchScale(Vector3.one * 0.1f, 0.3f);
+            }
         }
 
         private void Die()
         {
+            transform.DOComplete();
+            transform.DOScale(Vector3.zero, 1f).SetEase(Ease.InExpo);
             GameManager.Instance.ChangeState(GameState.Lose);
         }
     }

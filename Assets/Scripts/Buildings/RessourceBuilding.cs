@@ -8,6 +8,7 @@ public class RessourceBuilding : Building
 {
     [Header("Referencing"), SerializeField] private Image _fillImage;
     [SerializeField] private GameObject _ant;
+    [SerializeField] public ParticleSystem LeafParticle;
     [Header("Parameters"), Range(0, 10)] public int RessourcePerRound = 1;
 
     private void Start()

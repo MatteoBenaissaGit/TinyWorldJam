@@ -161,6 +161,7 @@ public class PathManager : MonoBehaviour
         foreach (Tile tile in TilePath)
         {
             GameManager.Instance.Neighbours(tile).ForEach(x => x.Unsuggest());
+            tile.SelectParticle.Play();
         }
         GameManager.Instance.ChangeState(GameState.ManagingDefense);
     }

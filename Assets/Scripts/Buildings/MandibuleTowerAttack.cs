@@ -29,9 +29,9 @@ public class MandibuleTowerAttack : AttackBuilding
             Vector3 enemyPosition = projectile.EnemyToAim.transform.position;
             
             projectile.ProjectileLaunched.transform.position =
-                Vector3.MoveTowards(position, enemyPosition, 0.01f);
+                Vector3.MoveTowards(position, enemyPosition, ProjectileSpeed);
             
-            if (Vector3.Distance(position, enemyPosition) < 0.01f)
+            if (Vector3.Distance(position, enemyPosition) < 0.1f)
             {
                 projectile.EnemyToAim.SetLife(-Damage);
                 Destroy(projectile.ProjectileLaunched);

@@ -6,10 +6,9 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Referencing")] [SerializeField]
-    private GameObject _lifeUI;
-
+    [Header("Referencing")] [SerializeField] private GameObject _lifeUI;
     [SerializeField] private Image _lifeImage;
+    [SerializeField] private ParticleSystem _deathParticle;
 
     [Header("Enemy")] [SerializeField] private float _life;
     public float Damage;
@@ -22,6 +21,7 @@ public class Enemy : MonoBehaviour
     private int _currentTile;
     [HideInInspector] public float MoveTime;
     [HideInInspector] public Sequence TweenSequence;
+    [ReadOnly] public bool CanBeTargeted = true;
 
     private void Start()
     {
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         _lifeImage.DOComplete();
         _lifeImage.DOFillAmount(_currentLife / _life, 0.1f);
         
-        if (_currentLife < _life)
+        if (_currentLife < _life && _lifeUI.activeInHierarchy == false)
         {
             _lifeUI.SetActive(true);
             Vector3 scale = _lifeUI.transform.localScale;
@@ -75,9 +75,18 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        if (CanBeTargeted == false)
+        {
+            return;    
+        }
+        
         transform.DOKill();
         TweenSequence.Kill();
         transform.DOScale(Vector3.zero, 0.3f).OnComplete(DestroyItself);
+        _deathParticle.Play(); 
+        _deathParticle.transform.SetParent(GameManager.Instance.transform);
+        _deathParticle.transform.localScale = Vector3.one * 0.3f;
+        CanBeTargeted = false;
         if (FindObjectsOfType<Enemy>().Length <= 1)
         {
             GameManager.Instance.RoundsAndDefenseManager.EndOfWave();
@@ -91,7 +100,12 @@ public class Enemy : MonoBehaviour
 
     private void AttainedArrival()
     {
+        if (CanBeTargeted == false || _currentLife <= 0)
+        {
+            return;    
+        }
+        
         GameManager.Instance.EnemyAttainArrival(this);
-        Destroy(gameObject);
+        Die();
     }
 }

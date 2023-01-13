@@ -27,9 +27,9 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [SerializeField] private PathManager _pathManager;
 
     [Header("Parameters")]
-    [Range(0, 10)] public int NumberOfAnts;
+    [Range(0, 20)] public int NumberOfAnts;
     [ReadOnly] public int NumberOfAvailaibleAnts;
-    [Range(0, 10)] public int NumberOfLeafs;
+    [Range(0, 20)] public int NumberOfLeafs;
     [ReadOnly] private int _currentRound = 0;
     [SerializeField] private List<Wave> _waveList = new List<Wave>();
 
@@ -199,7 +199,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
         card.SetupCard(true);
     }
 
-    private CardInfo GetRandomCard()
+    public CardInfo GetRandomCard()
     {
         System.Random rnd = new System.Random();
         int randomNumber = rnd.Next(0, _cardsInfos.Count);
@@ -344,6 +344,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
             RessourceBuilding ressourceBuilding = building.GetComponent<RessourceBuilding>();
             if (building.CanBeUsed && ressourceBuilding != null && building.IsUsed)
             {
+                ressourceBuilding.LeafParticle.Play();
                 NumberOfLeafs++;
             }
         }

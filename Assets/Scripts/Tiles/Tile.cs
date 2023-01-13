@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private Building _departurePrefab;
     [SerializeField] private Building _waterPrefab;
     [SerializeField] private Building _ressourceBuildingPrefab;
+    [SerializeField] public ParticleSystem SelectParticle;
 
     [Space(10), ReadOnly] public bool IsOccupied;
     [ReadOnly] public Building OccupierBuilding;
@@ -162,6 +163,7 @@ public class Tile : MonoBehaviour
         IsOccupied = true;
         OccupierBuilding = building;
         building.TileOccupied = this;
+        SelectParticle.Play();
     }
 
     public void SetPreviewBuilding(GameObject previewBuilding, float offsetY)
