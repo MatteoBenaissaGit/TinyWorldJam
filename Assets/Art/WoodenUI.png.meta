@@ -692,7 +692,7 @@ TextureImporter:
         height: 123
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 28, z: 0, w: 22}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1302,11 +1302,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WoodenUI_31: 542161841
-      WoodenUI_9: 1131114602
+      WoodenUI_35: 1922524954
       WoodenUI_41: 1306744124
       WoodenUI_43: 1508336893
-      WoodenUI_12: 1317386282
+      WoodenUI_17: 1684238525
+      WoodenUI_36: 1274494797
       WoodenUI_50: 284028320
       WoodenUI_7: -1300082845
       WoodenUI_40: -768139357
@@ -1355,9 +1355,9 @@ TextureImporter:
       WoodenUI_27: 594035067
       WoodenUI_24: -1745717897
       WoodenUI_6: 2047848578
-      WoodenUI_35: 1922524954
-      WoodenUI_36: 1274494797
-      WoodenUI_17: 1684238525
+      WoodenUI_31: 542161841
+      WoodenUI_9: 1131114602
+      WoodenUI_12: 1317386282
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

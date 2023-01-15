@@ -12,6 +12,7 @@ public class CardInfo : ScriptableObject
     public Sprite Image;
     public Building CardBuilding;
     public GameObject PreviewBuilding;
+    public float PreviewBuildingOffsetY;
 }
 
 public enum CardType

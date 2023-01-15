@@ -15,7 +15,8 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [Header("Referencing"), SerializeField]
     private TextMeshProUGUI _leafNumberText;
 
-    [SerializeField] private TextMeshProUGUI _antNumberText;
+    [SerializeField] private TextMeshProUGUI _antCurrentNumberText;
+    [SerializeField] private TextMeshProUGUI _antTotalNumberText;
     [SerializeField] private List<GameObject> _roundsUIImagesList;
     [SerializeField] private List<Card> _cards;
     [SerializeField] private List<CardInfo> _cardsInfos;
@@ -24,10 +25,10 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [SerializeField] public Image LifeBarImage;
     [SerializeField] private Image _lifeBarDefenseImage;
     [SerializeField] private Image _timerCircularImage;
+    [SerializeField] private TextMeshProUGUI _enemiesToGoText;
     [SerializeField] private PathManager _pathManager;
 
-    [Header("Parameters")]
-    [Range(0, 20)] public int NumberOfAnts;
+    [Header("Parameters")] [Range(0, 20)] public int NumberOfAnts;
     [ReadOnly] public int NumberOfAvailaibleAnts;
     [Range(0, 20)] public int NumberOfLeafs;
     [ReadOnly] private int _currentRound = 0;
@@ -39,8 +40,11 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [ReadOnly] public float TimeSinceCardSelected;
 
     private Wave _currentWave;
-    [FormerlySerializedAs("_totalTimeOfWave")] [ReadOnly, SerializeField] private float _totalNumberOfEnemyGroupInWave;
-    [ReadOnly, SerializeField] private float _currentTimeOfWave;
+
+    [FormerlySerializedAs("_totalTimeOfWave")] [ReadOnly, SerializeField]
+    private float _totalNumberOfEnemyGroupInWave;
+
+    [ReadOnly, SerializeField] private int _enemiesPassed;
     [ReadOnly, SerializeField] private float _spawnEnemyTime;
     [ReadOnly, SerializeField] private float _currentSpawnEnemyTime;
     [ReadOnly, SerializeField] private int _currentEnemyGroup;
@@ -48,7 +52,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
     [ReadOnly, SerializeField] private List<GameObject> _enemyWaveList = new List<GameObject>();
     [ReadOnly, SerializeField] private int _currentEnemy;
     [ReadOnly] public bool IsAttacking;
-    
+
     #endregion
 
     #region Unity Engine Methods
@@ -64,18 +68,18 @@ public class RoundsAndDefenseManager : MonoBehaviour
     private void Update()
     {
         TimeSinceCardSelected -= Time.deltaTime;
-        
+
         if (GameManager.Instance.CurrentGameState != GameState.ManagingDefense &&
             GameManager.Instance.CurrentGameState != GameState.Attack)
         {
             return;
         }
-        
+
         if (IsPlacingCard == false)
         {
             AddOrRemoveAnts();
         }
-        
+
         ManageCardSelection();
 
         if (IsAttacking)
@@ -91,7 +95,8 @@ public class RoundsAndDefenseManager : MonoBehaviour
     public void RefreshUI()
     {
         _leafNumberText.text = NumberOfLeafs.ToString();
-        _antNumberText.text = $"{NumberOfAvailaibleAnts}/{NumberOfAnts}";
+        _antCurrentNumberText.text = NumberOfAvailaibleAnts.ToString();
+        _antTotalNumberText.text = NumberOfAnts.ToString();
         for (int i = 0; i < _roundsUIImagesList.Count; i++)
         {
             _roundsUIImagesList[i].SetActive(i < _currentRound);
@@ -128,9 +133,9 @@ public class RoundsAndDefenseManager : MonoBehaviour
                     {
                         CheckUseOrUnuseForBuildingsWithMoreAnts(building);
                     }
-                    
+
                     break;
-                
+
                 case false:
                     if (NumberOfAvailaibleAnts > 0)
                     {
@@ -170,24 +175,25 @@ public class RoundsAndDefenseManager : MonoBehaviour
     {
         _startRoundButton.interactable = IsPlacingCard == false;
         _cancelCardButton.SetActive(IsPlacingCard);
-
+        
         Tile tile = GameManager.Instance.SelectedTile;
-        if (tile != null &&
-            tile.IsOccupied == false &&
-            IsPlacingCard && SelectedCard != null & SelectedCard.CardInfoData.CardBuilding != null &&
-            SelectedCard.CardInfoData.Cost <= NumberOfLeafs && 
+        if (Input.GetMouseButtonUp(0) && 
+            SelectedCard != null && 
+            IsPlacingCard && 
+            tile != null &&
             TimeSinceCardSelected <= 0)
         {
-            if (SelectedCard.CardInfoData.PreviewBuilding != null)
-            {
-                tile.SetPreviewBuilding(SelectedCard.CardInfoData.PreviewBuilding, -0.4f);
-            }
-            if (Input.GetMouseButtonUp(0))
+            
+            if (tile.IsOccupied == false && SelectedCard.CardInfoData.CardBuilding != null && SelectedCard.CardInfoData.Cost <= NumberOfLeafs)
             {
                 NumberOfLeafs -= SelectedCard.CardInfoData.Cost;
                 RefreshUI();
                 tile.SetBuilding(SelectedCard.CardInfoData.CardBuilding, -0.4f);
                 UseCard(SelectedCard, true);
+            }
+            else
+            {
+                GameManager.Instance.SelectionUI.transform.DOShakePosition(0.3f, new Vector3(0.15f, 0, 0.15f), 20, 0f);
             }
         }
     }
@@ -224,8 +230,9 @@ public class RoundsAndDefenseManager : MonoBehaviour
         {
             return;
         }
+
         GameManager.Instance.ChangeState(GameState.Attack);
-        
+
         //calculate wave
         _currentWave = _waveList[_currentRound];
         //list for each wave to complete the path
@@ -234,10 +241,12 @@ public class RoundsAndDefenseManager : MonoBehaviour
         {
             timeForEnemyToCompletePathList.Add(enemyGroup.SpeedToCrossOneTile * _pathManager.TilePath.Count);
         }
+
         //reset enemy wave list
         _currentEnemyInEnemyGroup = 0;
         _currentEnemyGroup = 0;
         int numberOfEnemies = 0;
+        _enemiesPassed = 0;
         _enemyWaveList.Clear();
         //_enemyWaveList
         foreach (EnemyGroup enemyGroup in _currentWave.EnemyGroupList)
@@ -248,12 +257,14 @@ public class RoundsAndDefenseManager : MonoBehaviour
                 _enemyWaveList.Add(enemyGroup.EnemyType);
             }
         }
+
         //total time (circular fill)
         _totalNumberOfEnemyGroupInWave = _currentWave.EnemyGroupList.Count;
+        _enemiesToGoText.text = (_enemyWaveList.Count - _enemiesPassed).ToString();
         //spawn timer
         _spawnEnemyTime = _currentWave.EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
         _currentSpawnEnemyTime = _spawnEnemyTime;
-        
+
         //attack towers
         foreach (Building building in GameManager.Instance.BuildingList)
         {
@@ -263,45 +274,49 @@ public class RoundsAndDefenseManager : MonoBehaviour
                 attackBuilding.Launch();
             }
         }
-        
+
         //ui & state
         _currentRound++;
         RefreshUI();
         IsAttacking = true;
         _timerCircularImage.fillAmount = 1;
-        float timeToFill = _waveList[_currentRound-1].EnemyGroupList[_currentEnemyGroup].TimeToSpawnWave();
-        _timerCircularImage.DOFillAmount(1 - (float)_currentEnemyGroup-1 / (float)_totalNumberOfEnemyGroupInWave, timeToFill).SetEase(Ease.Linear);
+        float timeToFill = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup].TimeToSpawnWave();
+        _timerCircularImage
+            .DOFillAmount(1 - (float)_currentEnemyGroup - 1 / (float)_totalNumberOfEnemyGroupInWave, timeToFill)
+            .SetEase(Ease.Linear);
     }
 
     private void TimerManagement()
     {
         //wave
-        if (_currentEnemyGroup == _totalNumberOfEnemyGroupInWave-1 && FindObjectsOfType<Enemy>().Length == 0)
+        if (_currentEnemyGroup == _totalNumberOfEnemyGroupInWave - 1 && FindObjectsOfType<Enemy>().Length == 0)
         {
             print("end of wave");
             EndOfWave();
         }
-        
+
         //enemy spawn
         _currentSpawnEnemyTime -= Time.deltaTime;
         if (_currentSpawnEnemyTime <= 0 && _currentEnemy < _enemyWaveList.Count && IsAttacking)
         {
             SpawnEnemy(_enemyWaveList[_currentEnemy]);
             _currentEnemy++;
-            
+
             //check for next enemyGroup
             _currentEnemyInEnemyGroup++;
             if (_currentEnemyInEnemyGroup >= _currentWave.EnemyGroupList[_currentEnemyGroup].AmountOfEnemies &&
-                _currentEnemyGroup < _currentWave.EnemyGroupList.Count-1)
+                _currentEnemyGroup < _currentWave.EnemyGroupList.Count - 1)
             {
                 _currentEnemyGroup++;
                 _currentEnemyInEnemyGroup = 0;
                 //ui
-                EnemyGroup passedGroup = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup-1];
+                EnemyGroup passedGroup = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup - 1];
                 EnemyGroup group = _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup];
                 float timeToFill = group.TimeToSpawnWave() + passedGroup.WaitTimeAtEnd + group.SpeedToCrossOneTile;
                 _currentSpawnEnemyTime = passedGroup.WaitTimeAtEnd == 0 ? 1 : passedGroup.WaitTimeAtEnd;
-                _timerCircularImage.DOFillAmount(1 - (float)_currentEnemyGroup-1 / (float)_totalNumberOfEnemyGroupInWave, timeToFill).SetEase(Ease.Linear);
+                _timerCircularImage
+                    .DOFillAmount(1 - (float)_currentEnemyGroup - 1 / (float)_totalNumberOfEnemyGroupInWave, timeToFill)
+                    .SetEase(Ease.Linear);
             }
 
             _spawnEnemyTime = _currentWave.EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
@@ -310,7 +325,7 @@ public class RoundsAndDefenseManager : MonoBehaviour
                 _currentSpawnEnemyTime = _spawnEnemyTime;
             }
         }
-        
+
         //ui
         RefreshUI();
     }
@@ -321,24 +336,29 @@ public class RoundsAndDefenseManager : MonoBehaviour
         Enemy enemyScript = spawnedEnemy.GetComponent<Enemy>();
 
         float timeForEnemyToCompletePath = _pathManager.TilePath.Count *
-                                           _waveList[_currentRound-1].EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
-        
+                                           _waveList[_currentRound - 1].EnemyGroupList[_currentEnemyGroup]
+                                               .SpeedToCrossOneTile;
+
         enemyScript.Timer = timeForEnemyToCompletePath;
-        
+
         enemyScript.TilePath = _pathManager.TilePath;
         enemyScript.MoveTime = _currentWave.EnemyGroupList[_currentEnemyGroup].SpeedToCrossOneTile;
+
+        _enemiesPassed++;
+        _enemiesToGoText.text = (_enemyWaveList.Count - _enemiesPassed).ToString();
     }
 
     public void EndOfWave()
     {
         IsAttacking = false;
-        
+
         //check win or continue rounds
         if (_currentRound > 5)
         {
             GameManager.Instance.ChangeState(GameState.Win);
             return;
         }
+
         GameManager.Instance.ChangeState(GameState.ManagingDefense);
         _currentEnemy = 0;
         CheckRessources();
@@ -351,13 +371,16 @@ public class RoundsAndDefenseManager : MonoBehaviour
         foreach (Building building in list)
         {
             RessourceBuilding ressourceBuilding = building.GetComponent<RessourceBuilding>();
-            if (building.CanBeUsed && ressourceBuilding != null && building.IsUsed && alreadySeen.Contains(building) == false)
+            if (building.CanBeUsed && ressourceBuilding != null && building.IsUsed &&
+                alreadySeen.Contains(building) == false)
             {
                 ressourceBuilding.LeafParticle.Play();
                 NumberOfLeafs++;
             }
+
             alreadySeen.Add(building);
         }
+
         RefreshUI();
     }
 

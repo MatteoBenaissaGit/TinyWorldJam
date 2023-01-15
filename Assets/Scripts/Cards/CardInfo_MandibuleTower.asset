@@ -18,3 +18,4 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 56cf66653cdd13b44ab303c5cf6f6795, type: 3}
   CardBuilding: {fileID: 4481352474378457724, guid: e0dbef3610e44ba41ba62e24d3663149, type: 3}
   PreviewBuilding: {fileID: 2024084727442136357, guid: 34b250e3eae4e9f4d8a6e7d200d18cf0, type: 3}
+  PreviewBuildingOffsetY: 0.6

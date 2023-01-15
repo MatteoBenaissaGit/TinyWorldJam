@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PathManager PathManager;
     [SerializeField] public RoundsAndDefenseManager RoundsAndDefenseManager;
     [SerializeField] private GameObject _pathCreationUI;
-    [SerializeField] private GameObject _selectionUI;
+    public GameObject SelectionUI;
     [SerializeField] private GameObject _defenseUI;
     [SerializeField] private GameObject _roundsAttackUI;
     [SerializeField] private GameObject _winUI;
@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
     
     [HideInInspector] public Tile[,] TileArray = new Tile[,]{};
     [ReadOnly] public List<Building> BuildingList = new List<Building>();
+
+    private GameObject _previewBuilding;
+    private Tween _reduceSizeTween;
 
     #endregion
 
@@ -77,6 +80,7 @@ public class GameManager : MonoBehaviour
         SelectTiles();
         SelectionOnOffCheck();
         ShowAntUIBuilding();
+        SetPreviewBuilding();
     }
 
     #endregion
@@ -190,7 +194,9 @@ public class GameManager : MonoBehaviour
                 position.y < (int)_mapManager.GridSize.y)
             {
                 Tile neighbour = TileArray[(int)position.x,(int)position.y];
-                if (neighbour != null && (neighbour.IsOccupied == false || neighbour.OccupierBuilding.GetComponent<Path>()))
+                if (neighbour != null && (neighbour.IsOccupied == false || neighbour.OccupierBuilding.GetComponent<Path>() 
+                                                                        || neighbour.OccupierBuilding.GetComponent<Arrival>()
+                                                                        || neighbour.OccupierBuilding.GetComponent<Departure>()))
                 {
                     neighbours.Add(neighbour);
                 }
@@ -202,34 +208,36 @@ public class GameManager : MonoBehaviour
 
     private void SelectionOnOffCheck()
     {
-        if (SelectedTile != null && _selectionUI.activeInHierarchy == false && RoundsAndDefenseManager.OnHoverCard == false)
+        if (SelectedTile != null && SelectionUI.activeInHierarchy == false && RoundsAndDefenseManager.OnHoverCard == false 
+            && Instance.CurrentGameState != GameState.Attack)
         {
-            _selectionUI.SetActive(true);
-            _selectionUI.transform.localScale = Vector3.zero;
-            _selectionUI.transform.DOComplete();
-            _selectionUI.transform.DOScale(Vector3.one, 0.2f);
+            SelectionUI.SetActive(true);
+            SelectionUI.transform.localScale = Vector3.zero;
+            SelectionUI.transform.DOComplete();
+            SelectionUI.transform.DOScale(Vector3.one, 0.2f);
         }
-        if ((SelectedTile == null || RoundsAndDefenseManager.OnHoverCard) && _selectionUI.activeInHierarchy)
+        if ((SelectedTile == null || RoundsAndDefenseManager.OnHoverCard || GameManager.Instance.CurrentGameState == GameState.Attack ) 
+            && SelectionUI.activeInHierarchy)
         {
-            _selectionUI.transform.DOComplete();
-            _selectionUI.transform.DOScale(Vector3.zero, 0.1f).OnComplete(DeactivateSelection);
+            SelectionUI.transform.DOComplete();
+            SelectionUI.transform.DOScale(Vector3.zero, 0.1f).OnComplete(DeactivateSelection);
         }
     }
 
     private void DeactivateSelection()
     {
-        _selectionUI.SetActive(false);
+        SelectionUI.SetActive(false);
     }
 
     private void MoveSelectionTo(Vector2 position)
     {
-        _selectionUI.transform.DOMove(new Vector3(position.x, 0, position.y), 0.1f);
+        SelectionUI.transform.DOMove(new Vector3(position.x, 0, position.y), 0.1f);
     }
 
     public void ShakeSelectionAnimation()
     {
-        _selectionUI.transform.DOComplete();
-        _selectionUI.transform.DOShakePosition(0.25f, new Vector3(0.2f,0,0.2f), 25, 0);
+        SelectionUI.transform.DOComplete();
+        SelectionUI.transform.DOShakePosition(0.25f, new Vector3(0.2f,0,0.2f), 25, 0);
     }
 
     private void ShowAntUIBuilding()
@@ -239,6 +247,79 @@ public class GameManager : MonoBehaviour
             SelectedTile.OccupierBuilding.CanBeUsed)
         {
             SelectedTile.OccupierBuilding.ShowAntUI();
+        }
+    }
+
+    #endregion
+
+    #region Defense Method
+
+    public void SetPreviewBuilding()
+    {
+        if (_previewBuilding != null)
+        {
+            float offsetY = 0;
+            if (RoundsAndDefenseManager.SelectedCard != null)
+            {
+                offsetY = RoundsAndDefenseManager.SelectedCard.CardInfoData.PreviewBuildingOffsetY;
+            }
+            _previewBuilding.transform.position = SelectionUI.transform.position + new Vector3(0,offsetY,0);
+        }
+        
+        
+        //guard
+        if (CurrentGameState != GameState.ManagingDefense ||
+            SelectedTile == null || 
+            RoundsAndDefenseManager.IsPlacingCard == false)
+        {
+            if (_previewBuilding != null)
+            {
+                // _previewBuilding.transform.DOComplete();
+                // _reduceSizeTween = _previewBuilding.transform.DOScale(Vector3.zero, 0.3f).OnComplete(DestroyPreviewBuilding);
+                Destroy(_previewBuilding);
+            }
+            return;
+        }
+
+        //set preview
+        if (_previewBuilding == null && SelectedTile.IsOccupied == false)
+        {
+            float offsetY = RoundsAndDefenseManager.SelectedCard.CardInfoData.PreviewBuildingOffsetY;
+            _previewBuilding = Instantiate(RoundsAndDefenseManager.SelectedCard.CardInfoData.PreviewBuilding,
+                transform.position + Vector3.up + new Vector3(0,offsetY,0), Quaternion.identity);
+            _previewBuilding.transform.position = SelectedTile.transform.position;
+            Vector3 scale = _previewBuilding.transform.localScale;
+            _previewBuilding.transform.localScale = Vector3.zero;
+            _previewBuilding.transform.DOScale(scale, 0.3f);
+            
+            _previewBuilding.transform.SetParent(transform);
+        }
+        
+        //preview despawn
+        if ((SelectedTile.IsOccupied || SelectedTile == null) && 
+            _previewBuilding != null && _reduceSizeTween == null)
+        {
+            _previewBuilding.transform.DOComplete();
+            _reduceSizeTween = _previewBuilding.transform.DOScale(Vector3.zero, 0.3f).OnComplete(DestroyPreviewBuilding);
+        }
+
+        SelectedTile.IsPreviewed = true;
+        foreach (Tile tile in TileArray)
+        {
+            if (SelectedTile != tile)
+            {
+                tile.IsPreviewed = false;
+            }
+        }
+    }
+
+    private void DestroyPreviewBuilding()
+    {
+        if (_previewBuilding != null)
+        {
+            Destroy(_previewBuilding);
+            _previewBuilding = null;
+            _reduceSizeTween = null;
         }
     }
 

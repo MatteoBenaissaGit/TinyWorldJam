@@ -104,12 +104,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        _roundsAndDefenseManager.OnHoverCard = false;
         if (_roundsAndDefenseManager.IsPlacingCard && _roundsAndDefenseManager.SelectedCard == true)
         {
             return;
         }
 
-        _roundsAndDefenseManager.OnHoverCard = false;
         AnimateDown();
     }
 
@@ -119,7 +119,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         {
             return;
         }
-        print("up");
         transform.DOComplete();
         transform.DOMoveY(_baseY + value, 0.3f);
     }
@@ -130,7 +129,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         {
             return;
         }
-        print("down");
         transform.DOComplete();
         transform.DOMoveY(_baseY, 0.15f);
     }

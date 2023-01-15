@@ -166,17 +166,17 @@ public class Tile : MonoBehaviour
         SelectParticle.Play();
     }
 
-    public void SetPreviewBuilding(GameObject previewBuilding, float offsetY)
-    {
-        if (IsOccupied || IsPreviewed)
-        {
-            return;
-        }
-        
-        _previewBuilding = Instantiate(previewBuilding, transform.position + Vector3.up + new Vector3(0,offsetY,0), Quaternion.identity);
-        _previewBuilding.transform.SetParent(transform);
-        IsPreviewed = true;
-    }
+    // public void SetPreviewBuilding(GameObject previewBuilding, float offsetY)
+    // {
+    //     if (IsOccupied || IsPreviewed)
+    //     {
+    //         return;
+    //     }
+    //     
+    //     _previewBuilding = Instantiate(previewBuilding, transform.position + Vector3.up + new Vector3(0,offsetY,0), Quaternion.identity);
+    //     _previewBuilding.transform.SetParent(transform);
+    //     IsPreviewed = true;
+    // }
 
     #endregion
 }

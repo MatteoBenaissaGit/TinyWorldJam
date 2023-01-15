@@ -89,6 +89,45 @@ public class PathManager : MonoBehaviour
             TilePath.Add(tile);
             _currentNumberOfPath--;
             
+            //path direction setup
+            foreach (Tile tileInTilePath in FindObjectsOfType<Tile>())
+            {
+                // values setup
+                Path path = tileInTilePath.IsOccupied ? tileInTilePath.OccupierBuilding.GetComponent<Path>() : null;
+                if (path == null)
+                {
+                    continue;
+                }
+                List<Direction> directionList = new List<Direction>();
+                
+                //neighbours check
+                foreach (Tile t in GameManager.Instance.Neighbours(tileInTilePath))
+                {
+                    if (t.OccupierBuilding == null) continue;
+                    
+                    Path p = t.OccupierBuilding.GetComponent<Path>();
+                    if (p == null || 
+                        t.OccupierBuilding.GetComponent<Arrival>() != null || 
+                        t.OccupierBuilding.GetComponent<Departure>() != null )
+                    {
+                        continue;
+                    }
+                        
+                    Vector3 neighbourPos = t.transform.position;
+                    Vector3 pos = tileInTilePath.transform.position;
+                    if (neighbourPos.x < pos.x) directionList.Add(Direction.Left);
+                    else if (neighbourPos.x > pos.x) directionList.Add(Direction.Right);
+                    if (neighbourPos.z < pos.z) directionList.Add(Direction.Down);
+                    else if (neighbourPos.z < pos.z) directionList.Add(Direction.Up);
+                }
+                
+                //set tile
+                if (path != null)
+                {
+                    path.SetTile(directionList);
+                }
+            }
+            
             //ui
             _numberOfPathUsableText.text = _currentNumberOfPath.ToString();
             _confirmPathButton.interactable = CanPathBeConfirmed();
