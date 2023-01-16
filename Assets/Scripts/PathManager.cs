@@ -106,13 +106,13 @@ public class PathManager : MonoBehaviour
                     if (t.OccupierBuilding == null) continue;
                     
                     Path p = t.OccupierBuilding.GetComponent<Path>();
-                    if (p == null || 
-                        t.OccupierBuilding.GetComponent<Arrival>() != null || 
-                        t.OccupierBuilding.GetComponent<Departure>() != null )
+                    Arrival a = t.OccupierBuilding.GetComponent<Arrival>();
+                    Departure d = t.OccupierBuilding.GetComponent<Departure>();
+                    if (p == null && a == null && d == null)
                     {
                         continue;
                     }
-                        
+
                     Vector3 neighbourPos = t.transform.position;
                     Vector3 pos = tileInTilePath.transform.position;
                     if (neighbourPos.x < pos.x) directionList.Add(Direction.Left);
@@ -188,6 +188,29 @@ public class PathManager : MonoBehaviour
         //ui
         _numberOfPathUsableText.text = _currentNumberOfPath.ToString();
         _confirmPathButton.interactable = false;
+    }
+    
+    public void GoBack()
+    {
+        if (TilePath.Count <= 1)
+        {
+            return;
+        }
+        
+        //suggest
+        foreach (Tile tile in GameManager.Instance.TileArray)
+        {
+            tile.Unsuggest();
+        }
+        GameManager.Instance.Neighbours(TilePath[^2]).ForEach(x => x.Suggest());
+        
+        //path clear
+        TilePath[^1].RemoveAnyBuilding();
+        TilePath.Remove(TilePath[^1]);
+        _currentNumberOfPath ++;
+        
+        //ui
+        _numberOfPathUsableText.text = _currentNumberOfPath.ToString();
     }
     
     public void ConfirmPath()

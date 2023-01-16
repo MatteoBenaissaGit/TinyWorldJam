@@ -269,6 +269,7 @@ MonoBehaviour:
   _lifeUI: {fileID: 4755851211161696415}
   _lifeImage: {fileID: 4755851212653650417}
   _deathParticle: {fileID: 7906348902252645436}
+  _mesh: {fileID: 5766398576466806464}
   _life: 20
   Damage: 5
   _offsetY: 1
@@ -521,19 +522,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7770201362298218459, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.71861255
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7770201362298218459, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7770201362298218459, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6954107
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7770201362298218459, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7770201362298218459, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -541,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7770201362298218459, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -88.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7770201362298218459, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -559,7 +560,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a1e24452692f7754a8d08ccf1f4801cd, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9060108989366273518, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8a749bccea898f34d9eb9f03ce45db69, type: 3}
 --- !u!4 &5766398576466806464 stripped
 Transform:

@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [Header("Referencing")] [SerializeField] private GameObject _lifeUI;
     [SerializeField] private Image _lifeImage;
     [SerializeField] private ParticleSystem _deathParticle;
+    [SerializeField] private Transform _mesh;
 
     [Header("Enemy")] [SerializeField] private float _life;
     public float Damage;
@@ -36,8 +37,23 @@ public class Enemy : MonoBehaviour
         TweenSequence = DOTween.Sequence();
         for (int i = 0; i < TilePath.Count - 1; i++)
         {
+            Vector3 position = TilePath[i].transform.position;
+            Vector3 nextPosition = TilePath[i + 1].transform.position;
+            
             TweenSequence.Append(
-                    transform.DOMove(TilePath[i + 1].transform.position + new Vector3(0, _offsetY, 0), MoveTime).SetEase(Ease.Linear));
+                    transform.DOMove(nextPosition + new Vector3(0, _offsetY, 0), MoveTime).SetEase(Ease.Linear));
+
+            Vector3 rotation;
+            if (position.x == nextPosition.x)
+            {
+                rotation = position.z < nextPosition.z ? new Vector3(0, 0, 0) : new Vector3(0, 180, 0);
+            }
+            else
+            {
+                rotation = position.x < nextPosition.x ? new Vector3(0, 90, 0) : new Vector3(0, 270, 0);
+            }
+            
+            TweenSequence.Join(_mesh.DORotate(rotation, MoveTime/2, RotateMode.FastBeyond360));
         }
 
         TweenSequence.OnComplete(AttainedArrival);

@@ -4,34 +4,13 @@
     <list default="true" id="ed4eb72d-7d11-49f1-b6bc-daef4dcc7b2b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TinyWorldJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TinyWorldJam/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Font/Mogena SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Font/Mogena SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/WoodenUI.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/WoodenUI.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/---CORE---.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/---CORE---.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/AntsUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/AntsUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Arrival.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Arrival.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/GunAntTower/GunAntProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/GunAntTower/GunAntProjectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/HabillageLevel1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/HabillageLevel1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MandibuleTower/MandibuleProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MandibuleTower/MandibuleProjectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MandibuleTower/MandibuleTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MandibuleTower/MandibuleTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Path.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Path.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/RoundIconUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/RoundIconUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CreditScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CreditScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DemoScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DemoScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/Path.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/Path.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/Card.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo_GunAntTower.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo_GunAntTower.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo_MandibuleTower.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cards/CardInfo_MandibuleTower.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/EnemyBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/EnemyBase.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/EnemyFly.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/EnemyFly.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tiles/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tiles/Tile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +112,7 @@
       <workItem from="1673597837372" duration="9893000" />
       <workItem from="1673648983821" duration="8522000" />
       <workItem from="1673709945840" duration="5934000" />
+      <workItem from="1673876990103" duration="3299000" />
     </task>
     <servers />
   </component>
