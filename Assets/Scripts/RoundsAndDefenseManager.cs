@@ -75,13 +75,15 @@ public class RoundsAndDefenseManager : MonoBehaviour
             return;
         }
 
-        if (IsPlacingCard == false)
+        if (GameManager.Instance.CurrentGameState == GameState.ManagingDefense)
         {
-            AddOrRemoveAnts();
+            if (IsPlacingCard == false)
+            {
+                AddOrRemoveAnts();
+            }
+            ManageCardSelection();
         }
-
-        ManageCardSelection();
-
+        
         if (IsAttacking)
         {
             TimerManagement();
