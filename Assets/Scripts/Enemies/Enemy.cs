@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
                 rotation = position.x < nextPosition.x ? new Vector3(0, 90, 0) : new Vector3(0, 270, 0);
             }
             
-            TweenSequence.Join(_mesh.DORotate(rotation, MoveTime/2, RotateMode.FastBeyond360));
+            TweenSequence.Join(_mesh.DORotate(rotation, MoveTime/2, RotateMode.Fast));
         }
 
         TweenSequence.OnComplete(AttainedArrival);

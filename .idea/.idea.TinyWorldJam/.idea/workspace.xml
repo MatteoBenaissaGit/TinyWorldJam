@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed4eb72d-7d11-49f1-b6bc-daef4dcc7b2b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoundsAndDefenseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +108,7 @@
       <workItem from="1673648983821" duration="8522000" />
       <workItem from="1673709945840" duration="5934000" />
       <workItem from="1673876990103" duration="3299000" />
-      <workItem from="1673947081580" duration="646000" />
+      <workItem from="1673947081580" duration="1270000" />
     </task>
     <servers />
   </component>
