@@ -178,6 +178,7 @@ public class PathManager : MonoBehaviour
         {
             if (tile != Departure.TileOccupied)
             {
+                tile.SelectParticle.Play();
                 tile.RemoveAnyBuilding();
             }
         }
@@ -196,21 +197,29 @@ public class PathManager : MonoBehaviour
         {
             return;
         }
+
+        //path clear
+        TilePath[^1].RemoveAnyBuilding();
+        TilePath[^1].SelectParticle.Play();
+        TilePath.Remove(TilePath[^1]);
+        _currentNumberOfPath ++;
         
-        //suggest
+        //suggest 
         foreach (Tile tile in GameManager.Instance.TileArray)
         {
             tile.Unsuggest();
         }
-        GameManager.Instance.Neighbours(TilePath[^2]).ForEach(x => x.Suggest());
-        
-        //path clear
-        TilePath[^1].RemoveAnyBuilding();
-        TilePath.Remove(TilePath[^1]);
-        _currentNumberOfPath ++;
-        
+        foreach (Tile tile in GameManager.Instance.Neighbours(TilePath[^1]))
+        {
+            if (tile != TilePath[^2])
+            {
+                tile.Suggest();
+            }
+        }
+
         //ui
         _numberOfPathUsableText.text = _currentNumberOfPath.ToString();
+        _confirmPathButton.interactable = CanPathBeConfirmed();
     }
     
     public void ConfirmPath()
